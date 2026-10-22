@@ -241,7 +241,7 @@ npm run dev</code></pre>
   </ul>
 
   <footer>
-    <p>© 2025 Study Group Finder & Collaboration Platform | Developed by Bhoomika Khyani</p>
+    <p>© 2026 Study Group Finder & Collaboration Platform | Developed by Bhoomika Khyani</p>
   </footer>
 </body>
 </html>
