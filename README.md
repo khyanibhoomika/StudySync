@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Study Group Finder & Collaboration Platform - README</title>
+  <title>StudySync</title>
 </head>
 <body>
 
-  <h1>Study Group Finder & Collaboration Platform</h1>
+  <h1>StudySync</h1>
 
   <h2>🎯 Project Statement</h2>
   <p>
@@ -18,7 +18,7 @@
 
   <h2>👥 Developer </h2>
   <ul>
-    <li><strong>Bhoomika Khyani</strong> – Frontend & Backend Developer</li>
+    <li><strong>Jay Deora, Kanchan Choudhary & Bhoomika Khyani</strong> – Frontend & Backend Developer</li>
   </ul>
 
   <h2>✨ Features</h2>
@@ -241,7 +241,7 @@ npm run dev</code></pre>
   </ul>
 
   <footer>
-    <p>© 2025 Study Group Finder & Collaboration Platform | Developed by Bhoomika Khyani</p>
+    <p>© 2025 StudySync & Collaboration Platform | Developed by Jay Deora, Kanchan Choudhary & Bhoomika Khyani</p>
   </footer>
 </body>
 </html>
