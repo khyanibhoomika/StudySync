@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom"; // Import Link here
 // --- Reimagined Course Card Component ---
 function CourseCard({ course, isEnrolled, onEnrollmentChange }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   // This single function handles both enroll and unenroll
   const handleAction = async (action) => {
@@ -105,7 +105,7 @@ const MyCourses = () => {
   const [activeTab, setActiveTab] = useState("enrolled");
 
   const fetchData = useCallback(async () => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
       navigate("/login");
       return;

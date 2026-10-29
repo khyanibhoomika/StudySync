@@ -7,7 +7,7 @@ const GroupFiles = ({ groupId, userRole, onDocumentCountChange }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   // Fetch documents from API
   const fetchDocuments = async () => {

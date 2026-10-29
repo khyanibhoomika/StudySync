@@ -12,7 +12,7 @@ import SectionsPage from "../Calendar/SectionsPage";
 export default function GroupDetailPage({ openFloatingChat }) {
   const { groupId } = useParams();
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const [group, setGroup] = useState(null);
   const [members, setMembers] = useState([]);

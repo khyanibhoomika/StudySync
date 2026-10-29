@@ -13,11 +13,11 @@ function isTokenExpired(token) {
 }
 
 function authHeaders() {
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   if (isTokenExpired(token)) {
     // Token is expired, clear it and redirect to login
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.href = "/login";
     return {};
   }
@@ -67,8 +67,8 @@ export async function deleteSelectedNotifications(notificationIds) {
   });
   if (res.status === 403) {
     // Token expired or invalid, redirect to login
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.href = "/login";
     throw new Error("Session expired. Please log in again.");
   }

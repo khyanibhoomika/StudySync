@@ -25,9 +25,10 @@ export default function FindPeers() {
   const [allPeersSearch, setAllPeersSearch] = useState("");
 
   // Fetch Peers (Unchanged)
+  // Fetch Peers
   useEffect(() => {
     const fetchPeersData = async () => {
-      const token = sessionStorage.getItem("token");
+      const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
         return;
@@ -35,17 +36,36 @@ export default function FindPeers() {
 
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:8145/api/dashboard", {
+        // 1. Fetch All Users from your new backend endpoint
+        const usersResponse = await fetch("http://localhost:8145/api/users/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
-
-        if (!response.ok) {
-          throw new Error("Failed to load peer suggestions.");
+        
+        if (!usersResponse.ok) {
+          throw new Error("Failed to load peers.");
         }
+        
+        const rawUsers = await usersResponse.json();
 
-        const data = await response.json();
-        setPeers(data.suggestedPeers || []);
-        setAllPeers(data.allPeers || data.suggestedPeers || []);
+        // Map the raw user database records to the UI structure expected by your components
+        const formattedAllPeers = rawUsers.map((u) => ({
+          user: u,
+          commonCourses: [], // Leaves empty until you link the Course/Group tables
+          matchScore: 0
+        }));
+        
+        setAllPeers(formattedAllPeers);
+
+        // 2. Fetch Suggested Peers (Maintains your existing dashboard logic)
+        const dashResponse = await fetch("http://localhost:8145/api/dashboard", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        
+        if (dashResponse.ok) {
+          const dashData = await dashResponse.json();
+          setPeers(dashData.suggestedPeers || []);
+        }
+        
       } catch (err) {
         setError(err.message);
       } finally {

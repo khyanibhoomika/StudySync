@@ -14,12 +14,12 @@ export default function Dashboard() {
   const [userName, setUserName] = useState("User");
 
   const handleLogout = useCallback(() => {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     navigate("/login");
   }, [navigate]);
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) return handleLogout();
 
     const fetchData = async () => {
@@ -54,7 +54,7 @@ export default function Dashboard() {
       } catch (err) {
         console.error("Dashboard fetch error:", err);
         setError(err.message);
-        handleLogout();
+        //handleLogout();
       } finally {
         setLoading(false);
       }

@@ -8,7 +8,7 @@ const AIChat = () => {
 
     useEffect(() => {
        
-        const storedUser=sessionStorage.getItem("user");
+        const storedUser=localStorage.getItem("user");
         if(storedUser){
             const user=JSON.parse(storedUser);
             setName(user.name?user.name.split(" ")[0]:"User");
@@ -24,7 +24,7 @@ const AIChat = () => {
         setLoading(true);
 
         try{
-            const token=sessionStorage.getItem("token");
+            const token=localStorage.getItem("token");
             const response=await fetch("http://localhost:8145/api/ai/chat",{
                 method:"POST",
                 headers:{

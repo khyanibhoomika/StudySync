@@ -274,7 +274,7 @@ export default function Nav({
 }) {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(
-    !!sessionStorage.getItem("token")
+    !!localStorage.getItem("token")
   );
   const [profilePic, setProfilePic] = useState(null);
   const [userName, setUserName] = useState("User");
@@ -286,7 +286,7 @@ export default function Nav({
   }, [location.pathname]);
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
     if (!token) {
       setUserName("User");
@@ -295,7 +295,7 @@ export default function Nav({
     }
     const fetchNavUserData = async () => {
       try {
-        const storedUser = sessionStorage.getItem("user");
+        const storedUser = localStorage.getItem("user");
         const userData = storedUser ? JSON.parse(storedUser) : { name: "User" };
         setUserName(userData.name || "User");
         const res = await fetch("http://localhost:8145/api/profile", {

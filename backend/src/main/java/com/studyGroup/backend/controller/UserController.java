@@ -34,7 +34,6 @@ public class UserController {
     @Autowired
     private EmailService emailService;
 
-    
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
     
@@ -61,18 +60,17 @@ public class UserController {
         String otp = otpService.generateAndCacheOtp(email);
 
         String emailBody = "Hello " + request.getOrDefault("name", "there") + ",\n\n"
-                + "Thank you for registering with Study Group Finder.\n\n"
+                + "Thank you for registering with StudySync.\n\n"
                 + "Your One-Time Password (OTP) is: " + otp + "\n\n"
                 + "This OTP is valid for 5 minutes.\n\n"
                 + "If you did not request this, please ignore this email.\n\n"
-                + "Best regards,\nThe Study Group Finder Team";
+                + "Best regards,\nThe StudySync Team";
 
-        emailService.sendEmail(email, "Your OTP for Study Group Finder Registration", emailBody);
+        emailService.sendEmail(email, "Your OTP for StudySync Registration", emailBody);
 
         return ResponseEntity.ok("OTP sent to your email address.");
     }
 
-   
     @PostMapping("/register/verify-otp")
     public ResponseEntity<?> verifyRegistrationOtp(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -85,7 +83,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid or expired OTP. Please try again.");
         }
     }
-    
     
     @PostMapping("/forgot-password/send-otp")
     public ResponseEntity<String> sendForgotPasswordOtp(@RequestBody Map<String, String> body) {
@@ -107,22 +104,20 @@ public class UserController {
             + "Your One-Time Password (OTP) is: %s\n\n"
             + "This OTP is valid for 5 minutes. Do not share it with anyone.\n\n"
             + "If you did not request this, please ignore this email.\n\n"
-            + "Best regards,\nThe Study Group Finder Team",
+            + "Best regards,\nThe StudySync Team",
             userName, otp
         );
         
-        String emailResponse = emailService.sendEmail(email, "Password Reset OTP for Study Group Finder", emailBody);
+        String emailResponse = emailService.sendEmail(email, "Password Reset OTP for StudySync", emailBody);
         
         if (emailResponse.startsWith("200")) {
             otpService.markResetStarted(email); 
             return ResponseEntity.ok("OTP sent to the registered email.");
         } else {
-            
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(emailResponse.substring(6)); 
         }
     }
 
- 
     @PostMapping("/forgot-password/verify-otp")
     public ResponseEntity<Map<String, String>> verifyForgotPasswordOtp(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -140,7 +135,6 @@ public class UserController {
         }
     }
 
-    
     @PostMapping("/forgot-password/reset-password")
     public ResponseEntity<Map<String, String>> resetPassword(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -164,6 +158,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", "Failed to reset password: " + e.getMessage()));
         }
     }
+
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody LoginRequest loginRequest) {
         String response = userService.validateCredentials(loginRequest.getEmail(), loginRequest.getPassword());
@@ -178,7 +173,6 @@ public class UserController {
         }
 
         String token = response.substring(5);
-        // Fetch user details for the response
         User user = userService.getUserByEmail(loginRequest.getEmail()).orElse(null);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -208,7 +202,6 @@ public class UserController {
         return ResponseEntity.ok(userProfile);
     }
     
-
     @PutMapping("/profile")
     public ResponseEntity<?> updateUserProfile(@RequestHeader("Authorization") String authHeader, @RequestBody User userDetails) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -262,5 +255,21 @@ public class UserController {
 
         userService.changePassword(email, request.getNewPassword());
         return ResponseEntity.ok(Map.of("message", "Password changed successfully."));
+    }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllUsers(@RequestHeader("Authorization") String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or missing Authorization header.");
+        }
+        
+        String token = authHeader.substring(7);
+        String email = jwtService.validateToken(token);
+        
+        if ("401".equals(email)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or expired token.");
+        }
+
+        java.util.List<User> allUsers = userService.getAllUsers();
+        return ResponseEntity.ok(allUsers);
     }
 }

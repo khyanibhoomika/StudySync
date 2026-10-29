@@ -247,7 +247,7 @@ const GroupChat = ({
   // --- Data Loading & WebSocket Logic (Unchanged) ---
 
   const loadHistory = async () => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         `http://localhost:8145/api/groups/${groupId}/messages`,
@@ -261,7 +261,7 @@ const GroupChat = ({
   };
 
   const loadPinnedMessages = async () => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         `http://localhost:8145/api/groups/${groupId}/pins`,
@@ -275,7 +275,7 @@ const GroupChat = ({
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     let stomp = null;
 
     const connect = () => {
@@ -326,7 +326,7 @@ const GroupChat = ({
       alert("You must be logged in to send messages.");
       return;
     }
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const message = {
       groupId,
       senderId: currentUser.id,
@@ -353,7 +353,7 @@ const GroupChat = ({
 
   const handleTogglePin = async (id) => {
     const isPinned = pinnedIds.includes(id);
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         `http://localhost:8145/api/groups/${groupId}/pins/messages/${id}`,
@@ -382,7 +382,7 @@ const GroupChat = ({
   };
 
   const handleDelete = async (id) => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         `http://localhost:8145/api/groups/${groupId}/messages/${id}`,
@@ -643,7 +643,7 @@ const GroupChat = ({
                               }`}
                               onClick={async () => {
                                 try {
-                                  const token = sessionStorage.getItem("token");
+                                  const token = localStorage.getItem("token");
                                   const res = await fetch(
                                     `http://localhost:8145/api/documents/${m.id}`,
                                     {
@@ -738,7 +738,7 @@ const GroupChat = ({
                     formData.append("file", file);
                     formData.append("groupId", groupId);
                     formData.append("senderId", currentUser.id);
-                    const token = sessionStorage.getItem("token");
+                    const token = localStorage.getItem("token");
                     const res = await fetch(
                       `http://localhost:8145/api/documents/upload`,
                       {

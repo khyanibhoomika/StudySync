@@ -19,7 +19,7 @@ const iconMap = {
 
 function CourseCard({ course }) {
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const handleClick = () => {
     if (token) navigate("/my-courses");
     else navigate("/login");
@@ -79,12 +79,12 @@ const ballColors = [
 export default function Home() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(
-    !!sessionStorage.getItem("token")
+    !!localStorage.getItem("token")
   );
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => setIsLoggedIn(!!sessionStorage.getItem("token")), [location]);
+  useEffect(() => setIsLoggedIn(!!localStorage.getItem("token")), [location]);
   useEffect(() => {
     const load = async () => {
       try {
