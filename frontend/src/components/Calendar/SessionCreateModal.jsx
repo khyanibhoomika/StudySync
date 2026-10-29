@@ -22,7 +22,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
   // NEW: Fetch organizer name just like Profile.jsx
   useEffect(() => {
     const fetchUserDetails = async () => {
-      const token = sessionStorage.getItem("token");
+      const token = localStorage.getItem("token");
       if (!token) return;
 
       try {
@@ -55,7 +55,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
   // Fetch courses
   useEffect(() => {
     if (groupId) return;
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) return;
 
     const fetchCourses = async () => {
@@ -82,7 +82,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
       return;
     }
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     const fetchGroups = async () => {
       try {

@@ -84,8 +84,8 @@ export default function Login() {
         // Persist auth for subsequent API/WebSocket calls
         const token = data.token || data.jwt || data.accessToken;
         const user = data.user || data.userDetails || data.profile || null;
-        if (token) sessionStorage.setItem("token", token);
-        if (user) sessionStorage.setItem("user", JSON.stringify(user));
+        if (token) localStorage.setItem("token", token);
+        if (user) localStorage.setItem("user", JSON.stringify(user));
         navigate("/dashboard");
       } else {
         if (res.status === 404) {

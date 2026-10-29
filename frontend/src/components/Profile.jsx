@@ -71,7 +71,7 @@ export default function Profile() {
     const fetchProfileData = async () => {
       setLoading(true);
       setError("");
-      const token = sessionStorage.getItem("token");
+      const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
         return;
@@ -106,7 +106,7 @@ export default function Profile() {
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err.message);
-        sessionStorage.removeItem("token");
+        localStorage.removeItem("token");
         navigate("/login");
       }
       setLoading(false);
@@ -140,7 +140,7 @@ export default function Profile() {
     setPasswordSuccess("");
     setPasswordError("");
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     // The 'aboutMe' field is correctly included here via the spread operator
     const profileToSave = {
@@ -228,7 +228,7 @@ export default function Profile() {
     setIsVerifying(true);
     setPasswordError("");
     setPasswordSuccess("");
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         "http://localhost:8145/api/users/verify-password",
@@ -269,7 +269,7 @@ export default function Profile() {
     setIsChanging(true);
     setPasswordError("");
     setPasswordSuccess("");
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         "http://localhost:8145/api/users/change-password",

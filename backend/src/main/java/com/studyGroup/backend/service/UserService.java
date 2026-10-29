@@ -12,6 +12,7 @@ import com.studyGroup.backend.model.User;
 import com.studyGroup.backend.repository.ProfileRepository;
 import com.studyGroup.backend.repository.UsersRepository;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -143,5 +144,8 @@ public class UserService implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException("User not found with email: " + email);
         }
+    }
+    public List<User> getAllUsers() {
+        return usersRepository.findAll();
     }
 }

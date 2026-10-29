@@ -65,7 +65,7 @@ export default function SessionsPage({ userRole, groupId }) {
   useEffect(() => {
     const fetchSessions = async () => {
       setLoading(true);
-      const token = sessionStorage.getItem("token");
+      const token = localStorage.getItem("token");
       if (!token) {
         setError("No authentication token found.");
         setLoading(false);
@@ -134,7 +134,7 @@ export default function SessionsPage({ userRole, groupId }) {
   // --- Event Handlers ---
 
   const handleAddSession = async (session) => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) return alert("No authentication token found.");
     try {
       const response = await fetch(
@@ -189,7 +189,7 @@ export default function SessionsPage({ userRole, groupId }) {
     if (!window.confirm("Are you sure you want to delete this session?"))
       return;
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(
         `http://localhost:8145/api/calendar/events/${sessionId}`,

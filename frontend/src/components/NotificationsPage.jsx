@@ -20,7 +20,7 @@ export default function NotificationsPage({
   const [selectedTab, setSelectedTab] = useState("All");
   const [notifications, setNotifications] = useState([]);
   const stompRef = useRef(null);
-  const userJson = sessionStorage.getItem("user");
+  const userJson = localStorage.getItem("user");
   const currentUser = userJson ? JSON.parse(userJson) : null;
 
   // --- New state for selection ---
@@ -54,7 +54,7 @@ export default function NotificationsPage({
 
   useEffect(() => {
     if (!currentUser?.id) return;
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     let stomp = null;
     try {
       const socket = new SockJS("http://localhost:8145/ws");

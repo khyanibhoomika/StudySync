@@ -13,7 +13,7 @@ import RoleBadge from "./RoleBadge";
 export default function GroupManagementPage() {
   const { groupId } = useParams();
   const navigate = useNavigate();
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -81,7 +81,7 @@ export default function GroupManagementPage() {
       if (
         [groupRes, membersRes, requestsRes].some((res) => res.status === 401)
       ) {
-        sessionStorage.removeItem("token");
+        localStorage.removeItem("token");
         navigate("/login");
         throw new Error("Your session has expired. Please log in again.");
       }

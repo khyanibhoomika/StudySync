@@ -45,7 +45,7 @@ export default function CalendarView() {
   // ✅ Fetch All Events
   useEffect(() => {
     const fetchEvents = async () => {
-      const token = sessionStorage.getItem("token");
+      const token = localStorage.getItem("token");
       if (!token) return;
 
       try {
@@ -79,7 +79,7 @@ export default function CalendarView() {
 
   // ✅ Add a new event
   const handleAddEvent = async (session) => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
       alert("No authentication token found.");
       return;

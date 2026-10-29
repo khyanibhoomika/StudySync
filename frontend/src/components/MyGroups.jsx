@@ -24,7 +24,7 @@ const MyGroups = () => {
   const [ratingFilter, setRatingFilter] = useState("any"); // Restored
 
   const fetchAllData = useCallback(async () => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
       navigate("/login");
       return;
@@ -74,7 +74,7 @@ const MyGroups = () => {
   const joinErrorTimer = React.useRef(null);
 
   const handleCreateGroup = async (newGroupData) => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch("http://localhost:8145/api/groups/create", {
         method: "POST",
@@ -128,7 +128,7 @@ const MyGroups = () => {
 
   const handleJoinAction = async (group, passkey = null) => {
     setJoiningGroupId(group.groupId);
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(
         `http://localhost:8145/api/groups/join/${group.groupId}`,

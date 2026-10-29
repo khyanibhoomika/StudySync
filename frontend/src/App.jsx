@@ -18,21 +18,18 @@ import QuickNavButton from "./components/QuickActionButton.jsx";
 import FloatingChatWindow from "./components/FloatingChatWindow";
 import GroupChat from "./components/groups/GroupChat";
 import NotificationsPage from "./components/NotificationsPage.jsx";
-import { getAllNotifications } from "./services/NotificationService.js"; // Import service
+import { getAllNotifications } from "./services/NotificationService.js";
 import AIChat from "./components/AIChat.jsx";
-
-// 🗓️ Calendar Import
+import PeerProfile from "./components/peerprofile.jsx";
+import DirectMessageChat from "./components/DirectMessageChat.jsx";
 import CalendarView from "./components/Calendar/CalendarView.jsx";
-
 import { Route, Routes, Navigate, useLocation, useNavigate } from "react-router-dom";
 
-// ✅ Protected Route Component
 function ProtectedRoute({ children }) {
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   return token ? children : <Navigate to="/login" replace />;
 }
 
-// ✅ Wrapper to hide QuickNavButton on login/signup pages
 function Layout({ children, notifications, unreadCount, onLogout }) {
   const location = useLocation();
   const hideOn = ["/login", "/signup", "/forgot-password"];
@@ -44,14 +41,13 @@ function Layout({ children, notifications, unreadCount, onLogout }) {
         unreadCount={unreadCount}
         onLogout={onLogout}
       />
-      {!shouldHide && <QuickNavButton />} {/* 🟣 Floating button */}
+      {!shouldHide && <QuickNavButton />} 
       {children}
     </>
   );
 }
 
 const App = () => {
-  // Support multiple (array) floating chats
   const [floatingChats, setFloatingChats] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -59,8 +55,8 @@ const App = () => {
   const navigate = useNavigate();
 
   const fetchNotifications = useCallback(async () => {
-    const token = sessionStorage.getItem("token");
-    const userJson = sessionStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    const userJson = localStorage.getItem("user");
     if (!token || !userJson) {
       setNotifications([]);
       setUnreadCount(0);
@@ -84,8 +80,8 @@ const App = () => {
   }, []);
 
   const handleLogout = useCallback(() => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setNotifications([]);
     setUnreadCount(0);
     navigate("/login");
@@ -117,7 +113,6 @@ const App = () => {
         onLogout={handleLogout}
       >
         <Routes>
-          {/* 🌍 Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/collab" element={<Collab />} />
@@ -126,119 +121,26 @@ const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/build-profile" element={<BuildProfile />} />
 
-          {/* 🔐 Authenticated Routes */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/my-courses"
-            element={
-              <ProtectedRoute>
-                <MyCourses />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/my-groups"
-            element={
-              <ProtectedRoute>
-                <MyGroups />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/find-peers"
-            element={
-              <ProtectedRoute>
-                <FindPeers />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/ai-chat"
-            element={
-              <ProtectedRoute>
-                <AIChat />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* 🗓️ Calendar Page */}
-          <Route
-            path="/calendar"
-            element={
-              <ProtectedRoute>
-                <CalendarView />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* 👥 Group Routes */}
-          <Route
-            path="/group/:groupId/manage"
-            element={
-              <ProtectedRoute>
-                <GroupManagementPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/group/:groupId"
-            element={
-              <ProtectedRoute>
-                <GroupDetailPage openFloatingChat={openFloatingChat} />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/notifications"
-            element={
-              <ProtectedRoute>
-                <NotificationsPage
-                  notifications={notifications}
-                  onNotificationsUpdate={fetchNotifications}
-                />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* 🚫 404 Fallback */}
-          <Route
-            path="*"
-            element={
-              <h1 className="text-center mt-20 text-2xl font-semibold text-gray-600">
-                404: Page Not Found
-              </h1>
-            }
-          />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/my-courses" element={<ProtectedRoute><MyCourses /></ProtectedRoute>} />
+          <Route path="/my-groups" element={<ProtectedRoute><MyGroups /></ProtectedRoute>} />
+          <Route path="/find-peers" element={<ProtectedRoute><FindPeers /></ProtectedRoute>} />
+          <Route path="/ai-chat" element={<ProtectedRoute><AIChat /></ProtectedRoute>} />
+          <Route path="/calendar" element={<ProtectedRoute><CalendarView /></ProtectedRoute>} />
+          <Route path="/group/:groupId/manage" element={<ProtectedRoute><GroupManagementPage /></ProtectedRoute>} />
+          <Route path="/group/:groupId" element={<ProtectedRoute><GroupDetailPage openFloatingChat={openFloatingChat} /></ProtectedRoute>} />
+          <Route path="/notifications" element={<ProtectedRoute><NotificationsPage notifications={notifications} onNotificationsUpdate={fetchNotifications} /></ProtectedRoute>} />
+          {/* Add these two new dynamic routes */}
+          <Route path="/profile/:id" element={<ProtectedRoute><PeerProfile /></ProtectedRoute>} />
+          <Route path="/chat/:id" element={<ProtectedRoute><DirectMessageChat /></ProtectedRoute>} />
+          
+          <Route path="*" element={<h1 className="text-center mt-20 text-2xl font-semibold text-gray-600">404: Page Not Found</h1>} />
         </Routes>
       </Layout>
 
-      {/* 💬 Render all floating chat windows */}
       {floatingChats.map((chat) => (
-        <FloatingChatWindow
-          key={chat.id}
-          onClose={() => closeFloatingChat(chat.id)}
-        >
+        <FloatingChatWindow key={chat.id} onClose={() => closeFloatingChat(chat.id)}>
           <GroupChat {...chat} openFloatingChat={openFloatingChat} />
         </FloatingChatWindow>
       ))}

@@ -4,7 +4,7 @@ import JoinGroupButton from "./JoinGroupButton";
 function CourseCard({ course }) {
   const navigate = useNavigate();
   // Correctly checking for the "token" item set during login
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const handleViewDetails = async () => {
     if (!token) {
