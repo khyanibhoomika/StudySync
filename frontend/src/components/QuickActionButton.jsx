@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Gradient + layout constants
@@ -8,6 +8,8 @@ const MENU_HEIGHT = 195;
 
 const QuickActionButton = () => {
   const navigate = useNavigate();
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
 
   // Position (restored from localStorage)
   const [pos, setPos] = useState({
@@ -34,12 +36,32 @@ const QuickActionButton = () => {
     localStorage.setItem("quickBtnPos", JSON.stringify(pos));
   }, [pos]);
 
+  // 🖱️ Close menu when clicking outside anywhere on the window
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        menuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
+
   // 🔄 Update menu direction dynamically
-  const updateMenuDirection = (x, y) => {
+  const updateMenuDirection = useCallback((x, y) => {
     const vertical = y > window.innerHeight / 2 ? "up" : "down";
     const horizontal = x > window.innerWidth / 2 ? "left" : "right";
     setMenuPlacement({ vertical, horizontal });
-  };
+  }, []);
 
   // 🖱️ Mouse drag
   const startDrag = (e) => {
@@ -48,19 +70,22 @@ const QuickActionButton = () => {
     setOffset({ x: e.clientX - pos.x, y: e.clientY - pos.y });
   };
 
-  const onDrag = (e) => {
-    if (!dragging) return;
-    const nx = Math.max(
-      8,
-      Math.min(window.innerWidth - 48, e.clientX - offset.x)
-    );
-    const ny = Math.max(
-      8,
-      Math.min(window.innerHeight - 48, e.clientY - offset.y)
-    );
-    setPos({ x: nx, y: ny });
-    updateMenuDirection(nx, ny);
-  };
+  const onDrag = useCallback(
+    (e) => {
+      if (!dragging) return;
+      const nx = Math.max(
+        8,
+        Math.min(window.innerWidth - 48, e.clientX - offset.x)
+      );
+      const ny = Math.max(
+        8,
+        Math.min(window.innerHeight - 48, e.clientY - offset.y)
+      );
+      setPos({ x: nx, y: ny });
+      updateMenuDirection(nx, ny);
+    },
+    [dragging, offset, updateMenuDirection]
+  );
 
   const stopDrag = () => setDragging(false);
 
@@ -88,7 +113,7 @@ const QuickActionButton = () => {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [dragging, offset]);
+  }, [dragging, offset, updateMenuDirection]);
 
   // 🧩 Mouse listeners
   useEffect(() => {
@@ -98,7 +123,7 @@ const QuickActionButton = () => {
       window.removeEventListener("mousemove", onDrag);
       window.removeEventListener("mouseup", stopDrag);
     };
-  });
+  }, [onDrag]);
 
   // ⚡ Button style
   const buttonStyle = {
@@ -176,6 +201,7 @@ const QuickActionButton = () => {
     <>
       {/* ⚡ Floating draggable button */}
       <button
+        ref={buttonRef}
         onMouseDown={startDrag}
         onTouchStart={(e) => {
           const touch = e.touches[0];
@@ -192,7 +218,7 @@ const QuickActionButton = () => {
 
       {/* 📋 Smart-positioned menu */}
       {menuOpen && (
-        <div style={getMenuStyle()} tabIndex={-1}>
+        <div ref={menuRef} style={getMenuStyle()} tabIndex={-1}>
           <button className={btnClasses} onClick={() => quickNav("/dashboard")}>
             🏠 Dashboard
           </button>
@@ -234,3 +260,4 @@ const QuickActionButton = () => {
 };
 
 export default QuickActionButton;
+  
