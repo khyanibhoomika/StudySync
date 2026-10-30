@@ -466,4 +466,3 @@ function ChatPreview({ peer }) {
     </div>
   );
 }
-  
