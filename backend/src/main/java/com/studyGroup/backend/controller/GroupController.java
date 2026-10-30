@@ -28,8 +28,6 @@ public class GroupController {
     @Autowired
     private GroupRepository groupRepository;
 
-    // --- Existing Endpoints (Logic maintained) ---
-
     @DeleteMapping("/leave/{groupId}")
     public ResponseEntity<?> leaveGroup(@PathVariable Long groupId, @RequestHeader("Authorization") String authHeader) {
         try {
@@ -113,7 +111,6 @@ public class GroupController {
             GroupDTO newGroup = groupService.createGroup(createGroupRequest, currentUser);
             return ResponseEntity.ok(newGroup);
         
-        // 🚩 FIX: Catch RuntimeException (e.g., "Course not found") to return 400 Bad Request
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("message", e.getMessage()));
@@ -209,10 +206,6 @@ public class GroupController {
         }
     }
 
-    /**
-     * Retrieves join requests for a specific group.
-     * 🚩 CORRECTION: Wraps the list in a map under the key "requests" as expected by frontend.
-     */
     @GetMapping("/{groupId}/requests")
     public ResponseEntity<?> getGroupJoinRequests(@PathVariable Long groupId,
                                                     @RequestHeader("Authorization") String authHeader) {
@@ -260,14 +253,11 @@ public class GroupController {
                     .body(Map.of("message", "An error occurred while updating group details: " + e.getMessage()));
         }
     }
-    // ----------------------------------------------------------------------
-    // 🚩 NEW RESTful Endpoint: Handles Group Join Request (Approve/Deny)
-    // Replaces the old @PostMapping("/requests/handle")
-    // ----------------------------------------------------------------------
+
     @PutMapping("/{groupId}/requests/{requestId}")
     public ResponseEntity<?> handleJoinRequest(@PathVariable Long groupId,
                                                @PathVariable Long requestId,
-                                               @RequestBody Map<String, String> payload, // Expects { "action": "APPROVED" | "DENIED" }
+                                               @RequestBody Map<String, String> payload,
                                                @RequestHeader("Authorization") String authHeader) {
         try {
             String token = authHeader.substring(7);
@@ -296,9 +286,7 @@ public class GroupController {
                     .body(Map.of("message", "An unexpected error occurred: " + e.getMessage()));
         }
     }
-    // ----------------------------------------------------------------------
-    // 🚩 NEW RESTful Endpoint: Remove Member (DELETE /{groupId}/members/{memberId})
-    // ----------------------------------------------------------------------
+
     @DeleteMapping("/{groupId}/members/{memberId}")
     public ResponseEntity<?> removeGroupMember(@PathVariable Long groupId, 
                                                 @PathVariable Long memberId,
@@ -324,13 +312,10 @@ public class GroupController {
         }
     }
     
-    // ----------------------------------------------------------------------
-    // 🚩 NEW RESTful Endpoint: Change Member Role (PUT /{groupId}/members/{memberId}/role)
-    // ----------------------------------------------------------------------
     @PutMapping("/{groupId}/members/{memberId}/role")
     public ResponseEntity<?> changeMemberRole(@PathVariable Long groupId, 
                                                 @PathVariable Long memberId,
-                                                @RequestBody Map<String, String> payload, // Expects { "role": "Admin" | "Member" }
+                                                @RequestBody Map<String, String> payload,
                                                 @RequestHeader("Authorization") String authHeader) {
         try {
             String token = authHeader.substring(7);
@@ -357,4 +342,35 @@ public class GroupController {
                     .body(Map.of("message", "An unexpected error occurred during role update: " + e.getMessage()));
         }
     }
-}
+
+    // ----------------------------------------------------------------------
+    // 🚩 NEW RESTful Endpoint: Delete Group (DELETE /{groupId})
+    // ----------------------------------------------------------------------
+    @DeleteMapping("/{groupId}")
+    public ResponseEntity<?> deleteGroup(@PathVariable Long groupId,
+                                         @RequestHeader("Authorization") String authHeader) {
+        try {
+            String token = authHeader.substring(7);
+            User currentUser = userService.getUserProfile(token);
+
+            if (currentUser == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("message", "Invalid or expired token."));
+            }
+
+            groupService.deleteGroup(groupId, currentUser);
+            return ResponseEntity.ok(Map.of("message", "Group deleted successfully."));
+
+        } catch (RuntimeException e) {
+            HttpStatus status = e.getMessage().toLowerCase().contains("authorized") || 
+                                e.getMessage().toLowerCase().contains("owner") 
+                                ? HttpStatus.FORBIDDEN : HttpStatus.BAD_REQUEST;
+            return ResponseEntity.status(status)
+                    .body(Map.of("message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "An error occurred while deleting the group: " + e.getMessage()));
+        }
+    }
+    }
+        
