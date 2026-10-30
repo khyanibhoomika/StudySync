@@ -24,7 +24,7 @@ export default function FindPeers() {
   // --- State for All Peers Tab ---
   const [allPeersSearch, setAllPeersSearch] = useState("");
 
-  // Fetch Peers (Unchanged)
+  // Fetch Peers & Filter Out Logged-In User
   useEffect(() => {
     const fetchPeersData = async () => {
       const token = sessionStorage.getItem("token");
@@ -44,8 +44,26 @@ export default function FindPeers() {
         }
 
         const data = await response.json();
-        setPeers(data.suggestedPeers || []);
-        setAllPeers(data.allPeers || data.suggestedPeers || []);
+
+        // Retrieve current user's ID from sessionStorage (adjust key if yours differs, e.g., "userId" or "user")
+        const currentUserId = 
+          sessionStorage.getItem("userId") || 
+          JSON.parse(sessionStorage.getItem("user") || "{}").id;
+
+        const rawSuggested = data.suggestedPeers || [];
+        const rawAll = data.allPeers || data.suggestedPeers || [];
+
+        // Filter out the logged-in user from the peer lists
+        const filteredSuggested = currentUserId 
+          ? rawSuggested.filter((peer) => peer.user.id.toString() !== currentUserId.toString())
+          : rawSuggested;
+
+        const filteredAll = currentUserId 
+          ? rawAll.filter((peer) => peer.user.id.toString() !== currentUserId.toString())
+          : rawAll;
+
+        setPeers(filteredSuggested);
+        setAllPeers(filteredAll);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -120,7 +138,7 @@ export default function FindPeers() {
               isActive={activeTab === "suggested"}
               onClick={() => {
                 setActiveTab("suggested");
-                setSelectedPeer(null); // Clear selection when switching tabs
+                setSelectedPeer(null);
               }}
             />
             <TabButton
@@ -128,7 +146,7 @@ export default function FindPeers() {
               isActive={activeTab === "all"}
               onClick={() => {
                 setActiveTab("all");
-                setSelectedPeer(null); // Clear selection when switching tabs
+                setSelectedPeer(null);
               }}
             />
           </div>
@@ -448,3 +466,4 @@ function ChatPreview({ peer }) {
     </div>
   );
 }
+  
