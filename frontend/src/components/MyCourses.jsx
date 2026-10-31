@@ -1,4 +1,4 @@
-Import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link here
 
 // --- Reimagined Course Card Component ---

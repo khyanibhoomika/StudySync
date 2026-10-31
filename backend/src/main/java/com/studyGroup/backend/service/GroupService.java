@@ -421,7 +421,11 @@ public class GroupService {
                 .map(membership -> convertToDTO(membership.getGroup(), membership.getRole()))
                 .collect(Collectors.toList());
     }
-
+public String getUserRoleInGroup(Long groupId, User user) {
+        return groupMemberRepository.findByGroupGroupIdAndUser_Id(groupId, user.getId())
+                .map(GroupMember::getRole)
+                .orElse("non-member");
+    }
     /**
      * NEW METHOD: Allows an Admin to permanently delete the entire group.
      */
