@@ -27,7 +27,7 @@ function CourseCard({ course }) {
   return (
     <div
       onClick={handleClick}
-      className="group relative w-80 flex-shrink-0 cursor-pointer scroll-snap-align-start rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105"
+      className="group relative h-full w-80 flex-shrink-0 cursor-pointer scroll-snap-align-start rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105"
     >
       <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-br from-purple-500 to-orange-400 opacity-0 blur-xl group-hover:opacity-60 transition-all duration-400" />
       <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-md">
@@ -35,10 +35,10 @@ function CourseCard({ course }) {
           {iconMap[course.courseId] || "📚"}
         </div>
         <h3 className="text-xl font-bold text-gray-800">{course.courseName}</h3>
-        <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+        <p className="mt-2 mb-4 text-sm text-gray-600 line-clamp-2">
           {course.description}
         </p>
-        <button className="mt-5 w-full rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 py-2.5 font-semibold text-white shadow-md hover:opacity-90 transition">
+        <button className="mt-auto w-full rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 py-2.5 font-semibold text-white shadow-md hover:opacity-90 transition">
           View Details
         </button>
       </div>
@@ -63,13 +63,11 @@ function FeatureCard({ icon, title, desc }) {
 
 const ballColors = [
   {
-    // Purple
     background:
       "radial-gradient(circle at 60% 40%, #A855F7 78%, #C084FC 100%, #fff 0%)",
     boxShadow: "0 0 32px 12px #A855F733, 0 0 0 2px #fff8",
   },
   {
-    // Orange
     background:
       "radial-gradient(circle at 60% 40%, #FB923C 78%, #FDBA74 100%, #fff 0%)",
     boxShadow: "0 0 32px 12px #FB923C33, 0 0 0 2px #fff8",
@@ -128,7 +126,6 @@ export default function Home() {
         `}
       </style>
       <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-purple-100 via-white to-orange-100">
-        {/* --- BOUNCING BALLS BACKGROUND --- */}
         <div className="bouncing-balls-bg">
           {[...Array(12)].map((_, i) => {
             const color = ballColors[i % 2];
@@ -148,7 +145,6 @@ export default function Home() {
           })}
         </div>
 
-        {/* HERO SECTION */}
         <section className="mx-auto max-w-4xl px-6 pt-20 pb-24 text-center relative z-10">
           <span className="mb-4 inline-block rounded-full bg-purple-100 px-4 py-1 text-sm font-bold text-purple-700 tracking-wide shadow-lg">
             Join 5,000+ Students
@@ -191,7 +187,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SVG DIVIDER */}
         <div className="w-full overflow-hidden" style={{ marginTop: "-72px" }}>
           <svg
             viewBox="0 0 1440 120"
@@ -199,35 +194,22 @@ export default function Home() {
             preserveAspectRatio="none"
           >
             <path
-              fill="#fb923c" // Orange (from theme)
+              fill="#fb923c"
               fillOpacity="0.08"
               d="M0,20 C320,120 900,0 1440,120 L1440,0 L0,0 Z"
             />
           </svg>
         </div>
 
-        {/* HOW IT WORKS CARDS */}
         <section className="mx-auto max-w-7xl px-6 py-20 perspective-1000 relative z-10">
           <h2 className="mb-12 text-center text-4xl font-bold text-gray-800">
             Get Started in Minutes
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              [
-                "🔍",
-                "Explore Courses",
-                "Find the exact topic you want to master.",
-              ],
-              [
-                "➕",
-                "Find a Group",
-                "Connect with passionate peers and mentors.",
-              ],
-              [
-                "💬",
-                "Collaborate",
-                "Use chat and calendars to learn together.",
-              ],
+              ["🔍", "Explore Courses", "Find the exact topic you want to master."],
+              ["➕", "Find a Group", "Connect with passionate peers and mentors."],
+              ["💬", "Collaborate", "Use chat and calendars to learn together."],
               ["🌱", "Grow Together", "Achieve success with team motivation."],
             ].map(([icon, title, desc]) => (
               <FeatureCard key={title} icon={icon} title={title} desc={desc} />
@@ -242,14 +224,13 @@ export default function Home() {
             preserveAspectRatio="none"
           >
             <path
-              fill="#9333EA" // Purple (from theme)
+              fill="#9333EA"
               fillOpacity="0.09"
               d="M0,20 C200,120 1200,0 1440,120 L1440,0 L0,0 Z"
             />
           </svg>
         </div>
 
-        {/* COURSES */}
         <section id="course-section" className="w-full py-20 relative z-10">
           <h2 className="mb-12 px-6 text-center text-4xl font-bold text-gray-800">
             Dive Into Your Next Course
@@ -259,7 +240,7 @@ export default function Home() {
               Loading courses...
             </p>
           ) : (
-            <div className="hide-scrollbar flex gap-8 overflow-x-auto scroll-snap-x px-6 py-4 md:px-12">
+            <div className="hide-scrollbar flex gap-8 overflow-x-auto scroll-snap-x px-6 py-4 md:px-12 items-stretch">
               {courses.map((c) => (
                 <CourseCard key={c.courseId} course={c} />
               ))}
@@ -275,54 +256,38 @@ export default function Home() {
           )}
         </section>
 
-        {/* FOOTER */}
-        {/* --- CHANGED: Gradient to match nav --- */}
         <footer className="relative mt-20 rounded-t-3xl bg-gradient-to-r from-purple-600 to-orange-500 py-12 text-white shadow-inner z-10">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 sm:grid-cols-3">
             <div>
               <h3 className="mb-2 text-2xl font-extrabold tracking-wide shadow-lg text-white">
                 StudySync
               </h3>
-              {/* --- CHANGED: Text to lighter purple-50 --- */}
               <p className="text-purple-50">
                 Connect. Collaborate. Succeed together.
               </p>
             </div>
             <div>
               <h4 className="mb-2 text-lg font-bold text-white">Navigation</h4>
-              {/* --- CHANGED: Text to lighter purple-50 --- */}
               <ul className="space-y-2 text-purple-50">
                 <li>
-                  <button
-                    onClick={scrollToCourses}
-                    className="hover:text-white transition-all"
-                  >
+                  <button onClick={scrollToCourses} className="hover:text-white transition-all">
                     Courses
                   </button>
                 </li>
                 <li>
-                  <Link to="/" className="hover:text-white transition-all">
-                    Home
-                  </Link>
+                  <Link to="/" className="hover:text-white transition-all">Home</Link>
                 </li>
                 <li>
-                  <Link
-                    to="/dashboard"
-                    className="hover:text-white transition-all"
-                  >
-                    Dashboard
-                  </Link>
+                  <Link to="/dashboard" className="hover:text-white transition-all">Dashboard</Link>
                 </li>
               </ul>
             </div>
             <div>
               <h4 className="mb-2 text-lg font-bold text-white">Contact</h4>
-              {/* --- CHANGED: Text to lighter purple-50 --- */}
               <p className="text-purple-50">support@studysync.com</p>
               <p className="mt-1 text-purple-50">Mon–Fri | 10AM–6PM</p>
             </div>
           </div>
-          {/* --- CHANGED: Text to lighter purple-50 --- */}
           <p className="mt-10 text-center text-purple-50">
             © {new Date().getFullYear()} StudySync. All rights reserved.
           </p>

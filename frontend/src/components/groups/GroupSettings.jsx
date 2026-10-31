@@ -6,6 +6,7 @@ const GroupSettings = ({
   groupId,
   handleLeaveGroup,
   handleJoinGroup,
+  handleDeleteGroup,
   members,
 }) => {
   const [showReportForm, setShowReportForm] = useState(false);
@@ -198,14 +199,28 @@ const GroupSettings = ({
                 Leave Group
               </h3>
               <p className="text-gray-600 text-sm mb-3">
-                You will lose access to all chats and resources. Your backend
-                logic should handle ownership transfer or group deletion.
+                Leaving the group will transfer ownership to another member or delete the group if you are the last member.
               </p>
               <button
                 onClick={handleLeaveGroup}
-                className="px-5 py-2 rounded-lg bg-red-100 text-red-700 font-semibold hover:bg-red-200 transition"
+                className="px-5 py-2 rounded-lg bg-orange-100 text-orange-700 font-semibold hover:bg-orange-200 transition"
               >
                 Leave Group
+              </button>
+            </div>
+
+            <div className="border-t pt-8">
+              <h3 className="text-lg font-semibold text-red-700">
+                Delete Group
+              </h3>
+              <p className="text-gray-600 text-sm mb-3">
+                Permanently delete this group and all its contents. This action cannot be undone.
+              </p>
+              <button
+                onClick={handleDeleteGroup}
+                className="px-5 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition shadow-sm"
+              >
+                Delete Group
               </button>
             </div>
           </>
@@ -216,3 +231,4 @@ const GroupSettings = ({
 };
 
 export default GroupSettings;
+      

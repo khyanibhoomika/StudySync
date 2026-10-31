@@ -45,7 +45,6 @@ public class DashboardService {
         return new DashboardDTO(joinedGroups, suggestedPeers, enrolledCourseIds.size());
     }
 
-
     private List<SuggestedPeerDTO> getSuggestedPeers(User currentUser) throws IOException {
 
         Profile currentUserProfile = profileRepository.findByEmail(currentUser.getEmail())
@@ -71,8 +70,10 @@ public class DashboardService {
                 commonCourses.retainAll(otherUserCourses);
 
                 if (!commonCourses.isEmpty()) {
+                    // Calculate exact match percentage against current user's total courses
+                    int matchPercentage = (int) Math.round(((double) commonCourses.size() / currentUserCourses.size()) * 100);
                     
-                    suggestions.add(new SuggestedPeerDTO(PeerUserDTO.fromEntity(otherUser), commonCourses.size(), commonCourses));
+                    suggestions.add(new SuggestedPeerDTO(PeerUserDTO.fromEntity(otherUser), commonCourses.size(), commonCourses, matchPercentage));
                 }
             }
         }
@@ -82,7 +83,6 @@ public class DashboardService {
         return suggestions;
     }
 
-
     private Set<String> getEnrolledCourseIdsAsSet(Profile profile) throws IOException {
         String enrolledCoursesJson = profile.getEnrolledCourseIds();
         if (enrolledCoursesJson == null || enrolledCoursesJson.isEmpty() || enrolledCoursesJson.equals("[]")) {
@@ -91,4 +91,3 @@ public class DashboardService {
         return objectMapper.readValue(enrolledCoursesJson, new TypeReference<>() {});
     }
 }
-

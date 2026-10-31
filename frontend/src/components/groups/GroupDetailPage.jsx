@@ -164,8 +164,9 @@ export default function GroupDetailPage({ openFloatingChat }) {
         );
 
         if (nextAdminCandidate) {
-          confirmationMessage = `⚠️ WARNING: You are the Group Admin/Owner. Leaving will transfer ownership to ${nextAdminCandidate.name || "another member"
-            }. Are you sure you want to proceed?`;
+          confirmationMessage = `⚠️ WARNING: You are the Group Admin/Owner. Leaving will transfer ownership to ${
+            nextAdminCandidate.name || "another member"
+          }. Are you sure you want to proceed?`;
         } else {
           confirmationMessage =
             "⚠️ WARNING: If You are the Group Admin/Owner. Leaving will result in ownership transfer. Are you sure you want to proceed?";
@@ -207,6 +208,36 @@ export default function GroupDetailPage({ openFloatingChat }) {
     }
   };
 
+  // DELETE GROUP LOGIC
+  const handleDeleteGroup = async () => {
+    if (userRole !== "owner") {
+      alert("Only the group admin can delete this group.");
+      return;
+    }
+
+    if (!window.confirm("⚠️ WARNING: Are you sure you want to permanently delete this group? This action cannot be undone and all data, resources, and chats will be lost.")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:8145/api/groups/${groupId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || `Failed to delete group (Status: ${response.status})`);
+      }
+
+      alert("Group deleted successfully.");
+      navigate("/my-groups");
+    } catch (err) {
+      console.error("Delete Group error:", err);
+      alert(`Error: ${err.message}`);
+    }
+  };
+
   // JOIN GROUP LOGIC
   const handleJoinGroup = () => {
     alert("Join Group logic");
@@ -219,10 +250,11 @@ export default function GroupDetailPage({ openFloatingChat }) {
         setActiveTab(tabName);
         setIsSidebarOpen(false);
       }}
-      className={`w-full text-left py-3 px-4 rounded-lg flex items-center gap-2 font-medium transition-colors ${activeTab === tabName
+      className={`w-full text-left py-3 px-4 rounded-lg flex items-center gap-2 font-medium transition-colors ${
+        activeTab === tabName
           ? "bg-purple-200 text-purple-800"
           : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
-        }`}
+      }`}
     >
       {label}
       {count !== undefined && (
@@ -462,10 +494,12 @@ export default function GroupDetailPage({ openFloatingChat }) {
             groupId={groupId}
             handleLeaveGroup={handleLeaveGroup}
             handleJoinGroup={handleJoinGroup}
+            handleDeleteGroup={handleDeleteGroup}
             members={members}
           />
         )}
       </main>
     </div>
   );
-}
+  }
+                                     

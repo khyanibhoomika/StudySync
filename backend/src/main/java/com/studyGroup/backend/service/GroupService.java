@@ -41,33 +41,22 @@ public class GroupService {
     @Autowired
     private CalendarEventRepository calendarEventRepository;
 
-    /**
-     * Helper method to retrieve the "About Me" field from the Profile entity.
-     * Searches by email using the defined repository method.
-     */
     private String getUserAboutMe(User user) {
         if (user == null || user.getEmail() == null)
             return null;
 
-        // Explicitly use the findByEmail method (as defined in your ProfileRepository)
         Optional<Profile> profile = profileRepository.findByEmail(user.getEmail());
 
         if (profile.isPresent()) {
             String aboutMe = profile.get().getAboutMe();
 
-            // Defensive check: Return null if the string is empty or just whitespace in the
-            // DB
             if (aboutMe != null && !aboutMe.trim().isEmpty()) {
                 return aboutMe.trim();
             }
         }
-        // Returns null if no Profile is found or if the aboutMe field is empty/null
         return null;
     }
 
-    /**
-     * Helper to convert GroupMember to DTO, pulling 'aboutMe' from Profile.
-     */
     private UserSummaryDTO convertToUserSummaryDTO(GroupMember member) {
         User user = member.getUser();
         String aboutMe = getUserAboutMe(user);
@@ -88,9 +77,6 @@ public class GroupService {
         return convertToDTO(group, null);
     }
 
-    /**
-     * Helper to convert Group to DTO, pulling creator 'aboutMe' from Profile.
-     */
     private GroupDTO convertToDTO(Group group, String userRole) {
         long memberCount = groupMemberRepository.countByGroup(group);
         boolean hasPasskey = group.getPasskey() != null && !group.getPasskey().isEmpty();
@@ -133,10 +119,7 @@ public class GroupService {
             Long remainingMembers = groupMemberRepository.countByGroup(group);
 
             if (remainingMembers == 0) {
-                // Delete associated calendar events first to avoid foreign key constraint
-                // violation
                 calendarEventRepository.deleteByAssociatedGroup(group);
-
                 groupJoinRequestRepository.deleteByGroup(group);
                 groupRepository.delete(group);
 
@@ -310,9 +293,6 @@ public class GroupService {
         groupMemberRepository.save(newMembership);
     }
 
-    /**
-     * Retrieves join requests for a specific group.
-     */
     public List<GroupJoinRequestDTO> getJoinRequests(Long groupId, User currentUser) {
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Group not found."));
@@ -325,7 +305,6 @@ public class GroupService {
             throw new RuntimeException("You are not authorized to view join requests for this group.");
         }
 
-        // Fetch PENDING requests only
         return groupJoinRequestRepository.findByGroupAndStatus(group, "PENDING").stream()
                 .map(req -> new GroupJoinRequestDTO(
                         req.getId(),
@@ -333,18 +312,14 @@ public class GroupService {
                                 Long.valueOf(req.getUser().getId()),
                                 req.getUser().getName(),
                                 req.getUser().getEmail(),
-                                getUserAboutMe(req.getUser()), // Correctly fetching bio from Profile
+                                getUserAboutMe(req.getUser()), 
                                 "Pending"),
                         req.getStatus()))
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Handles group join requests (accept/reject).
-     */
     @Transactional
     public void handleJoinRequest(Long groupId, Long requestId, String status, User currentUser) {
-        // 1. Authorization Check (Admin of this specific group)
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Group not found."));
 
@@ -356,7 +331,6 @@ public class GroupService {
             throw new RuntimeException("You are not authorized to manage requests for this group.");
         }
 
-        // 2. Find and Validate Request
         GroupJoinRequest request = groupJoinRequestRepository.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Request not found."));
 
@@ -365,14 +339,12 @@ public class GroupService {
         }
 
         if ("APPROVED".equalsIgnoreCase(status)) {
-            // 3. Check member limit before adding
             long currentMemberCount = groupMemberRepository.countByGroup(group);
             if (currentMemberCount >= group.getMemberLimit()) {
                 groupJoinRequestRepository.delete(request);
                 throw new RuntimeException("Group is full. Cannot approve this request.");
             }
 
-            // Add member
             GroupMember newMembership = new GroupMember();
             newMembership.setId(new GroupMemberId(group.getGroupId(), request.getUser().getId()));
             newMembership.setGroup(group);
@@ -383,16 +355,11 @@ public class GroupService {
             throw new RuntimeException("Invalid status provided. Must be APPROVED or DENIED.");
         }
 
-        // 4. Delete the request after handling to clear it from the pending list
         groupJoinRequestRepository.delete(request);
     }
 
-    /**
-     * NEW METHOD: Allows an Admin to remove a member.
-     */
     @Transactional
     public void removeMember(Long groupId, Long memberIdToRemove, User currentUser) {
-        // 1. Authorization Check: Current user must be an Admin
         GroupMember adminMembership = groupMemberRepository.findByGroupGroupIdAndUser_Id(groupId, currentUser.getId())
                 .orElseThrow(() -> new RuntimeException("Group not found or you are not a member."));
 
@@ -400,12 +367,10 @@ public class GroupService {
             throw new RuntimeException("You are not authorized to remove members from this group.");
         }
 
-        // 2. Prevent self-removal
         if (currentUser.getId().equals(memberIdToRemove.intValue())) {
             throw new RuntimeException("You cannot remove yourself. Use the leave group button instead.");
         }
 
-        // 3. Find group and member
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Group not found."));
 
@@ -413,25 +378,16 @@ public class GroupService {
                 .findByGroupGroupIdAndUser_Id(groupId, memberIdToRemove.intValue())
                 .orElseThrow(() -> new RuntimeException("Member not found in this group."));
 
-        // 4. Cannot remove the original creator
         if (memberToRemove.getUser().getId().equals(group.getCreatedBy().getId())) {
             throw new RuntimeException("The original group creator cannot be removed by other admins.");
         }
 
-        // 5. Remove the member
         groupMemberRepository.delete(memberToRemove);
-
-        // 6. Clean up any related join requests (Requires deleteByGroupAndUser in
-        // repository)
         groupJoinRequestRepository.deleteByGroupAndUser(group, memberToRemove.getUser());
     }
 
-    /**
-     * NEW METHOD: Allows an Admin to change a non-creator/non-self member's role.
-     */
     @Transactional
     public void changeMemberRole(Long groupId, Long memberIdToUpdate, String newRole, User currentUser) {
-        // 1. Authorization Check (Admin)
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Group not found."));
 
@@ -443,7 +399,6 @@ public class GroupService {
             throw new RuntimeException("You are not authorized to change member roles.");
         }
 
-        // 2. Cannot change role for yourself or the group creator
         if (currentUser.getId().equals(memberIdToUpdate.intValue())) {
             throw new RuntimeException("You cannot change your own role through this management tool.");
         }
@@ -451,7 +406,6 @@ public class GroupService {
             throw new RuntimeException("The original group creator's role cannot be modified.");
         }
 
-        // 3. Find and update the member's role
         GroupMember memberToUpdate = groupMemberRepository
                 .findByGroupGroupIdAndUser_Id(groupId, memberIdToUpdate.intValue())
                 .orElseThrow(() -> new RuntimeException("Member not found in this group."));
@@ -467,9 +421,38 @@ public class GroupService {
                 .map(membership -> convertToDTO(membership.getGroup(), membership.getRole()))
                 .collect(Collectors.toList());
     }
-
-    public String getUserRoleInGroup(Long groupId, User user) {
-        Optional<GroupMember> membership = getMembership(groupId, user);
-        return membership.map(GroupMember::getRole).orElse("non-member");
+public String getUserRoleInGroup(Long groupId, User user) {
+        return groupMemberRepository.findByGroupGroupIdAndUser_Id(groupId, user.getId())
+                .map(GroupMember::getRole)
+                .orElse("non-member");
     }
-}
+    /**
+     * NEW METHOD: Allows an Admin to permanently delete the entire group.
+     */
+    @Transactional
+    public void deleteGroup(Long groupId, User currentUser) {
+        // 1. Find the group
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Group not found with ID: " + groupId));
+
+        // 2. Authorization Check: Current user must be an Admin
+        GroupMember adminMembership = groupMemberRepository.findByGroupGroupIdAndUser_Id(groupId, currentUser.getId())
+                .orElseThrow(() -> new RuntimeException("You are not a member of this group."));
+
+        if (!"Admin".equalsIgnoreCase(adminMembership.getRole())) {
+            throw new RuntimeException("You are not authorized to delete this group. Only a group Admin can do this.");
+        }
+
+        // 3. Clean up related entities to prevent foreign key constraint violations
+        calendarEventRepository.deleteByAssociatedGroup(group);
+        groupJoinRequestRepository.deleteByGroup(group);
+
+        // Fetch and delete all group members
+        List<GroupMember> allMembers = groupMemberRepository.findByGroup(group);
+        groupMemberRepository.deleteAll(allMembers);
+
+        // 4. Delete the group
+        groupRepository.delete(group);
+    }
+                                                                  }
+                                     

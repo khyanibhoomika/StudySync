@@ -24,7 +24,6 @@ export default function FindPeers() {
   // --- State for All Peers Tab ---
   const [allPeersSearch, setAllPeersSearch] = useState("");
 
-  // Fetch Peers (Unchanged)
   // Fetch Peers
   useEffect(() => {
     const fetchPeersData = async () => {
@@ -36,7 +35,13 @@ export default function FindPeers() {
 
       setLoading(true);
       try {
-        // 1. Fetch All Users from your new backend endpoint
+        // Retrieve current user's ID from storage to filter out yourself
+        const currentUserId = 
+          sessionStorage.getItem("userId") || 
+          localStorage.getItem("userId") ||
+          JSON.parse(sessionStorage.getItem("user") || localStorage.getItem("user") || "{}").id;
+
+        // 1. Fetch All Users from your backend endpoint
         const usersResponse = await fetch("http://localhost:8145/api/users/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -48,11 +53,18 @@ export default function FindPeers() {
         const rawUsers = await usersResponse.json();
 
         // Map the raw user database records to the UI structure expected by your components
-        const formattedAllPeers = rawUsers.map((u) => ({
+        let formattedAllPeers = rawUsers.map((u) => ({
           user: u,
           commonCourses: [], // Leaves empty until you link the Course/Group tables
           matchScore: 0
         }));
+
+        // Filter out the logged-in user from all peers list
+        if (currentUserId) {
+          formattedAllPeers = formattedAllPeers.filter(
+            (peer) => peer.user.id.toString() !== currentUserId.toString()
+          );
+        }
         
         setAllPeers(formattedAllPeers);
 
@@ -63,7 +75,16 @@ export default function FindPeers() {
         
         if (dashResponse.ok) {
           const dashData = await dashResponse.json();
-          setPeers(dashData.suggestedPeers || []);
+          let rawSuggested = dashData.suggestedPeers || [];
+
+          // Filter out the logged-in user from suggested peers list
+          if (currentUserId) {
+            rawSuggested = rawSuggested.filter(
+              (peer) => peer.user.id.toString() !== currentUserId.toString()
+            );
+          }
+
+          setPeers(rawSuggested);
         }
         
       } catch (err) {
@@ -467,4 +488,5 @@ function ChatPreview({ peer }) {
       </div>
     </div>
   );
-}
+    }
+              
