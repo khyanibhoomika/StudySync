@@ -234,7 +234,7 @@ export default function FloatingChatWindow({ children, onClose }) {
     >
       <div
         onMouseDown={startDrag}
-        className="flex items-center cursor-move px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white select-none"
+        className="flex items-center cursor-move px-4 py-2 bg-gradient-to-r from-indigo-400 to-pink-400 text-white select-none"
         style={{
           borderTopLeftRadius: 14,
           borderTopRightRadius: 14,

@@ -33,7 +33,7 @@ const JoinGroupModal = ({ group, onClose, onSubmit }) => {
           <h2 className="text-2xl font-bold text-gray-800">
             Join Private Group
           </h2>
-          <p className="mt-2 text-purple-600 font-semibold text-lg">
+          <p className="mt-2 text-indigo-600 font-semibold text-lg">
             {group.name}
           </p>
           <p className="mt-3 text-sm text-gray-500 max-h-24 overflow-y-auto border-t pt-3">
@@ -54,7 +54,7 @@ const JoinGroupModal = ({ group, onClose, onSubmit }) => {
               id="passkey"
               value={passkey}
               onChange={(e) => setPasskey(e.target.value)}
-              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
               placeholder="Enter the group's passkey"
               required
             />
@@ -78,7 +78,7 @@ const JoinGroupModal = ({ group, onClose, onSubmit }) => {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "Joining..." : "Join Group"}
             </button>

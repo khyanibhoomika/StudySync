@@ -29,16 +29,16 @@ function CourseCard({ course }) {
       onClick={handleClick}
       className="group relative flex w-80 flex-shrink-0 cursor-pointer scroll-snap-align-start rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105"
     >
-      <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-br from-purple-500 to-orange-400 opacity-0 blur-xl group-hover:opacity-60 transition-all duration-400" />
+      <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-br from-indigo-500 to-cyan-400 opacity-0 blur-xl group-hover:opacity-60 transition-all duration-400" />
       <div className="relative z-10 flex w-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-md">
-        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-purple-100 to-orange-100 text-3xl shadow-lg">
+        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 to-cyan-100 text-3xl shadow-lg">
           {iconMap[course.courseId] || "📚"}
         </div>
         <h3 className="text-xl font-bold text-gray-800">{course.courseName}</h3>
         <p className="mt-2 mb-4 text-sm text-gray-600 line-clamp-2">
           {course.description}
         </p>
-        <button className="mt-auto w-full rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 py-2.5 font-semibold text-white shadow-md hover:opacity-90 transition">
+        <button className="mt-auto w-full rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 py-2.5 font-semibold text-white shadow-md hover:opacity-90 transition">
           View Details
         </button>
       </div>
@@ -49,9 +49,9 @@ function CourseCard({ course }) {
 function FeatureCard({ icon, title, desc }) {
   return (
     <div className="group relative rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105">
-      <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-r from-purple-500 to-orange-400 opacity-0 blur-xl group-hover:opacity-50 transition-all duration-400" />
+      <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-r from-indigo-500 to-cyan-400 opacity-0 blur-xl group-hover:opacity-50 transition-all duration-400" />
       <div className="relative z-10 flex flex-col items-center rounded-2xl border border-white/20 bg-white/90 px-8 py-10 text-center shadow-xl backdrop-blur-md">
-        <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-100 to-orange-100 text-4xl shadow-md">
+        <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-cyan-100 text-4xl shadow-md">
           {icon}
         </span>
         <h3 className="mt-2 text-xl font-bold text-gray-900">{title}</h3>
@@ -125,7 +125,7 @@ export default function Home() {
           }
         `}
       </style>
-      <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-purple-100 via-white to-orange-100">
+      <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-cyan-100">
         <div className="bouncing-balls-bg">
           {[...Array(12)].map((_, i) => {
             const color = ballColors[i % 2];
@@ -146,12 +146,12 @@ export default function Home() {
         </div>
 
         <section className="mx-auto max-w-4xl px-6 pt-20 pb-24 text-center relative z-10">
-          <span className="mb-4 inline-block rounded-full bg-purple-100 px-4 py-1 text-sm font-bold text-purple-700 tracking-wide shadow-lg">
+          <span className="mb-4 inline-block rounded-full bg-indigo-100 px-4 py-1 text-sm font-bold text-indigo-700 tracking-wide shadow-lg">
             Join 5,000+ Students
           </span>
           <h1 className="text-5xl font-black text-gray-800 sm:text-7xl">
             Find Your Ideal Study Group with{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent drop-shadow-lg">
+            <span className="bg-gradient-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent drop-shadow-lg">
               StudySync
             </span>
           </h1>
@@ -164,7 +164,7 @@ export default function Home() {
             {isLoggedIn ? (
               <Link
                 to="/my-courses"
-                className="rounded-xl bg-gradient-to-r from-purple-600 to-orange-500 px-8 py-3 font-extrabold text-white drop-shadow-lg hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-purple-300"
+                className="rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-8 py-3 font-extrabold text-white drop-shadow-lg hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-indigo-300"
                 style={{ boxShadow: "0 4px 24px rgba(147,51,234,0.12)" }}
               >
                 My Courses
@@ -172,7 +172,7 @@ export default function Home() {
             ) : (
               <button
                 onClick={scrollToCourses}
-                className="rounded-xl bg-gradient-to-r from-purple-600 to-orange-500 px-8 py-3 font-extrabold text-white drop-shadow-lg hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-purple-300"
+                className="rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-8 py-3 font-extrabold text-white drop-shadow-lg hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-indigo-300"
                 style={{ boxShadow: "0 4px 24px rgba(147,51,234,0.12)" }}
               >
                 Explore Courses
@@ -180,7 +180,7 @@ export default function Home() {
             )}
             <Link
               to={isLoggedIn ? "/my-groups" : "/login"}
-              className="rounded-xl border-2 border-purple-400 px-8 py-3 font-extrabold text-purple-700 bg-white/70 hover:bg-purple-600 hover:text-white shadow transition-colors"
+              className="rounded-xl border-2 border-indigo-400 px-8 py-3 font-extrabold text-indigo-700 bg-white/70 hover:bg-indigo-600 hover:text-white shadow transition-colors"
             >
               {isLoggedIn ? "My Groups" : "Find a Group"}
             </Link>
@@ -246,9 +246,9 @@ export default function Home() {
               ))}
               <Link
                 to={isLoggedIn ? "/my-courses" : "/login"}
-                className="flex w-60 flex-shrink-0 cursor-pointer scroll-snap-align-start items-center justify-center rounded-2xl border-2 border-dashed border-purple-400 bg-white/75 shadow hover:border-orange-400 hover:bg-white/90 transition-colors"
+                className="flex w-60 flex-shrink-0 cursor-pointer scroll-snap-align-start items-center justify-center rounded-2xl border-2 border-dashed border-indigo-400 bg-white/75 shadow hover:border-cyan-400 hover:bg-white/90 transition-colors"
               >
-                <span className="font-bold text-purple-500 hover:text-orange-500 transition-colors">
+                <span className="font-bold text-indigo-500 hover:text-cyan-500 transition-colors">
                   View All Courses &rarr;
                 </span>
               </Link>
@@ -256,19 +256,19 @@ export default function Home() {
           )}
         </section>
 
-        <footer className="relative mt-20 rounded-t-3xl bg-gradient-to-r from-purple-600 to-orange-500 py-12 text-white shadow-inner z-10">
+        <footer className="relative mt-20 rounded-t-3xl bg-gradient-to-r from-indigo-600 to-cyan-500 py-12 text-white shadow-inner z-10">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 sm:grid-cols-3">
             <div>
               <h3 className="mb-2 text-2xl font-extrabold tracking-wide shadow-lg text-white">
                 StudySync
               </h3>
-              <p className="text-purple-50">
+              <p className="text-indigo-50">
                 Connect. Collaborate. Succeed together.
               </p>
             </div>
             <div>
               <h4 className="mb-2 text-lg font-bold text-white">Navigation</h4>
-              <ul className="space-y-2 text-purple-50">
+              <ul className="space-y-2 text-indigo-50">
                 <li>
                   <button onClick={scrollToCourses} className="hover:text-white transition-all">
                     Courses
@@ -284,11 +284,11 @@ export default function Home() {
             </div>
             <div>
               <h4 className="mb-2 text-lg font-bold text-white">Contact</h4>
-              <p className="text-purple-50">support@studysync.com</p>
-              <p className="mt-1 text-purple-50">Mon–Fri | 10AM–6PM</p>
+              <p className="text-indigo-50">support@studysync.com</p>
+              <p className="mt-1 text-indigo-50">Mon–Fri | 10AM–6PM</p>
             </div>
           </div>
-          <p className="mt-10 text-center text-purple-50">
+          <p className="mt-10 text-center text-indigo-50">
             © {new Date().getFullYear()} StudySync. All rights reserved.
           </p>
         </footer>

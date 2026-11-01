@@ -13,14 +13,14 @@ const GroupCard = ({ group, isMember, isJoining, onJoinClick }) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col h-full hover:shadow-xl hover:border-purple-300 transition-all duration-300">
+    <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col h-full hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
       <div className="flex-grow">
         <div className="flex justify-between items-center mb-3">
           <span
             className={`capitalize px-3 py-1 text-xs font-semibold rounded-full ${
               group.privacy.toLowerCase() === "public"
-                ? "bg-purple-100 text-purple-800"
-                : "bg-orange-100 text-orange-800"
+                ? "bg-indigo-100 text-indigo-800"
+                : "bg-cyan-100 text-cyan-800"
             }`}
           >
             {group.privacy}
@@ -38,7 +38,7 @@ const GroupCard = ({ group, isMember, isJoining, onJoinClick }) => {
       <div className="mt-4">
         <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
           <div
-            className="bg-purple-600 h-2 rounded-full"
+            className="bg-indigo-600 h-2 rounded-full"
             style={{ width: `${fullness}%` }}
           ></div>
         </div>
@@ -78,7 +78,7 @@ const GroupCard = ({ group, isMember, isJoining, onJoinClick }) => {
           <button
             onClick={onJoinClick}
             disabled={isJoining}
-            className="w-full text-center py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white hover:opacity-90 text-sm font-semibold shadow-md transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full text-center py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white hover:opacity-90 text-sm font-semibold shadow-md transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {getButtonText()}
           </button>

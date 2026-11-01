@@ -148,7 +148,7 @@ export default function CourseDetails() {
             ].map(([label, value]) => (
               <div
                 key={label}
-                className="rounded-xl bg-gradient-to-br from-purple-50 to-orange-50 p-4 text-center"
+                className="rounded-xl bg-gradient-to-br from-indigo-50 to-cyan-50 p-4 text-center"
               >
                 <p className="text-xs font-semibold uppercase text-gray-500">
                   {label}

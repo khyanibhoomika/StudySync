@@ -223,7 +223,7 @@ const MyGroups = () => {
     );
 
   return (
-    <div className="min-h-screen bg-purple-50/50 p-4 sm:p-8 relative">
+    <div className="min-h-screen bg-indigo-50/50 p-4 sm:p-8 relative">
       {/* Custom Error Toast */}
       {joinError && (
         <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded shadow-lg animate-fade-in-down flex items-center gap-2 min-w-[300px] justify-center">
@@ -241,14 +241,14 @@ const MyGroups = () => {
         {/* My Groups Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-6">
-            My <span className="text-purple-600">Groups</span>
+            My <span className="text-indigo-600">Groups</span>
           </h1>
           <div className="flex border-b border-gray-200">
             <button
               onClick={() => setActiveTab("joined")}
               className={`py-3 px-5 text-md font-semibold focus:outline-none transition-colors duration-200 ${activeTab === "joined"
-                ? "border-b-2 border-purple-600 text-purple-600"
-                : "text-gray-500 hover:text-purple-500"
+                ? "border-b-2 border-indigo-600 text-indigo-600"
+                : "text-gray-500 hover:text-indigo-500"
                 }`}
             >
               Joined Groups
@@ -256,8 +256,8 @@ const MyGroups = () => {
             <button
               onClick={() => setActiveTab("owned")}
               className={`py-3 px-5 text-md font-semibold focus:outline-none transition-colors duration-200 ${activeTab === "owned"
-                ? "border-b-2 border-purple-600 text-purple-600"
-                : "text-gray-500 hover:text-purple-500"
+                ? "border-b-2 border-indigo-600 text-indigo-600"
+                : "text-gray-500 hover:text-indigo-500"
                 }`}
             >
               My Groups
@@ -299,7 +299,7 @@ const MyGroups = () => {
         {/* Discover Groups Section */}
         <div>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            Discover <span className="text-orange-500">Groups</span>
+            Discover <span className="text-cyan-500">Groups</span>
           </h2>
           <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-200 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -308,12 +308,12 @@ const MyGroups = () => {
                 placeholder="Search by name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-400 transition"
+                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400 transition"
               />
               <select
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
-                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-purple-400 transition"
+                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-indigo-400 transition"
               >
                 <option value="All">All Courses</option>
                 {(courses || []).map((course) => (
@@ -325,7 +325,7 @@ const MyGroups = () => {
               <select
                 value={memberFilter}
                 onChange={(e) => setMemberFilter(e.target.value)}
-                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-purple-400 transition"
+                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-indigo-400 transition"
               >
                 <option value="any">Any Group Size</option>
                 <option value="1-25">1-25 Members</option>
@@ -336,7 +336,7 @@ const MyGroups = () => {
               <select
                 value={ratingFilter}
                 onChange={(e) => setRatingFilter(e.target.value)}
-                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-purple-400 transition"
+                className="w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-indigo-400 transition"
               >
                 <option value="any">Any Rating</option>
                 <option value="4">4+ Stars</option>

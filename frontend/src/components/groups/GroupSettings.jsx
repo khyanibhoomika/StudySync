@@ -42,7 +42,7 @@ const GroupSettings = ({
                   id="memberSelect"
                   value={memberToReport}
                   onChange={(e) => setMemberToReport(e.target.value)}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-purple-400"
+                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
                   required
                 >
                   <option value="">Select a member...</option>
@@ -66,7 +66,7 @@ const GroupSettings = ({
                   rows="4"
                   value={reportReason}
                   onChange={(e) => setReportReason(e.target.value)}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-purple-400"
+                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
                   placeholder="Please provide details about the incident..."
                   required
                 ></textarea>
@@ -100,7 +100,7 @@ const GroupSettings = ({
             </p>
             <button
               onClick={handleJoinGroup}
-              className="px-5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-sm hover:opacity-90 transition"
+              className="px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-sm hover:opacity-90 transition"
             >
               Join Group
             </button>
@@ -180,7 +180,7 @@ const GroupSettings = ({
         {userRole === "owner" && (
           <>
             <div>
-              <h3 className="text-lg font-semibold text-purple-700">
+              <h3 className="text-lg font-semibold text-indigo-700">
                 Manage Group
               </h3>
               <p className="text-gray-600 text-sm mb-3">
@@ -188,7 +188,7 @@ const GroupSettings = ({
               </p>
               <Link
                 to={`/group/${groupId}/manage`}
-                className="inline-block px-5 py-2 rounded-lg bg-purple-100 text-purple-700 font-semibold hover:bg-purple-200 transition"
+                className="inline-block px-5 py-2 rounded-lg bg-indigo-100 text-indigo-700 font-semibold hover:bg-indigo-200 transition"
               >
                 Manage Group
               </Link>
@@ -203,7 +203,7 @@ const GroupSettings = ({
               </p>
               <button
                 onClick={handleLeaveGroup}
-                className="px-5 py-2 rounded-lg bg-orange-100 text-orange-700 font-semibold hover:bg-orange-200 transition"
+                className="px-5 py-2 rounded-lg bg-cyan-100 text-cyan-700 font-semibold hover:bg-cyan-200 transition"
               >
                 Leave Group
               </button>

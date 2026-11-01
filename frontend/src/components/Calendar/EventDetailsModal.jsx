@@ -7,30 +7,30 @@ export default function EventDetailsModal({ event, onClose }) {
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}
-            className="text-purple-600 hover:bg-purple-100 p-2 rounded-full transition"
+            className="text-indigo-600 hover:bg-indigo-100 p-2 rounded-full transition"
           >
             ✕
           </button>
         </div>
 
-        <h2 className="text-2xl font-bold text-purple-800 mb-2">
+        <h2 className="text-2xl font-bold text-indigo-800 mb-2">
           {event.title}
         </h2>
         <p className="text-gray-700 mb-3">{event.description}</p>
 
         {event.groupName && (
-          <p className="text-purple-700 font-semibold mb-1">
+          <p className="text-indigo-700 font-semibold mb-1">
             👥 Group: <span className="font-normal">{event.groupName}</span>
           </p>
         )}
 
         {event.courseName && (
-          <p className="text-purple-700 font-semibold mb-1">
+          <p className="text-indigo-700 font-semibold mb-1">
             📚 Course: <span className="font-normal">{event.courseName}</span>
           </p>
         )}
 
-        <p className="text-purple-700 font-semibold mb-1">
+        <p className="text-indigo-700 font-semibold mb-1">
           👤 Organizer: <span className="font-normal">{event.organizer}</span>
         </p>
 

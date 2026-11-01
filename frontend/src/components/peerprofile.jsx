@@ -47,21 +47,21 @@ export default function PeerProfile() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center">
-        <div className="w-32 h-32 rounded-full bg-purple-100 text-purple-700 font-bold text-5xl flex items-center justify-center mb-6">
+        <div className="w-32 h-32 rounded-full bg-indigo-100 text-indigo-700 font-bold text-5xl flex items-center justify-center mb-6">
           {peer.name ? peer.name.charAt(0).toUpperCase() : "U"}
         </div>
         <h1 className="text-3xl font-bold text-gray-800">{peer.name}</h1>
         <p className="text-gray-500 mb-6">{peer.universityName ?? "Student"}</p>
         
         <div className="w-full text-left bg-gray-50 p-6 rounded-xl border mb-6">
-          <h2 className="text-lg font-bold text-purple-700 mb-2">About</h2>
+          <h2 className="text-lg font-bold text-indigo-700 mb-2">About</h2>
           <p className="text-gray-700">{peer.aboutMe ?? "No bio available."}</p>
         </div>
 
         <div className="flex gap-4 w-full">
           <button 
             onClick={() => navigate(`/chat/${id}`)}
-            className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold rounded-lg hover:opacity-90 transition"
+            className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold rounded-lg hover:opacity-90 transition"
           >
             Message
           </button>

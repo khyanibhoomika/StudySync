@@ -130,7 +130,7 @@ export default function CalendarView() {
   // For a group-specific calendar, you would filter events here.
   // Example: const filteredEvents = events.filter(e => e.groupId === yourGroupId);
   return (
-    <div className="min-h-screen bg-purple-50/50 p-6 relative">
+    <div className="min-h-screen bg-indigo-50/50 p-6 relative">
       <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-xl p-6 border border-gray-200">
         <div className="flex justify-between items-center mb-6">
           <div>
@@ -213,10 +213,10 @@ export default function CalendarView() {
       {/* --- Smaller Button with Rotate Effect --- */}
       <motion.button
         onClick={() => setShowCreateModal(true)}
-        className="fixed bottom-8 right-8 bg-gradient-to-r from-purple-600 to-pink-500 text-white 
+        className="fixed bottom-8 right-8 bg-gradient-to-r from-indigo-600 to-pink-500 text-white 
              w-12 h-12 rounded-full 
              flex items-center justify-center 
-             shadow-lg shadow-purple-500/50 
+             shadow-lg shadow-indigo-500/50 
              z-50"
         // --- Animations ---
 
@@ -280,9 +280,9 @@ function MonthEvent({ event }) {
   const getCourseColor = (courseName) => {
     if (!courseName) return "bg-gray-400";
     const colors = [
-      "bg-purple-500",
+      "bg-indigo-500",
       "bg-pink-500",
-      "bg-orange-500",
+      "bg-cyan-500",
       "bg-blue-500",
       "bg-green-500",
       "bg-indigo-500",
@@ -320,7 +320,7 @@ function AgendaEvent({ event }) {
       <div
         className="flex-shrink-0 w-24 p-4 
                           flex flex-col items-center justify-center 
-                          bg-gradient-to-b from-purple-600 to-pink-500 text-white"
+                          bg-gradient-to-b from-indigo-600 to-pink-500 text-white"
       >
         <div className="text-2xl font-bold tracking-tight">
           {moment(event.start).format("hh:mm")}
@@ -343,7 +343,7 @@ function AgendaEvent({ event }) {
         {/* --- Tags (Course & Group) --- */}
         <div className="flex flex-wrap gap-2 mt-2">
           {event.courseName && (
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800">
               {event.courseName}
             </span>
           )}
@@ -376,7 +376,7 @@ function AgendaEvent({ event }) {
 /* ✅ Custom Sticky Agenda Date Header (Unchanged) */
 function AgendaHeader({ label }) {
   return (
-    <div className="sticky top-0 z-20 bg-gradient-to-r from-purple-700 to-pink-500 px-6 py-3 rounded-lg text-xl font-semibold text-white shadow mb-2 mt-6">
+    <div className="sticky top-0 z-20 bg-gradient-to-r from-indigo-700 to-pink-500 px-6 py-3 rounded-lg text-xl font-semibold text-white shadow mb-2 mt-6">
       {label}
     </div>
   );
@@ -431,12 +431,12 @@ function CustomToolbar({
   };
 
   return (
-    <div className="flex flex-wrap justify-between items-center gap-4 px-4 py-3 border-b border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+    <div className="flex flex-wrap justify-between items-center gap-4 px-4 py-3 border-b border-indigo-200 bg-gradient-to-r from-indigo-50 to-pink-50">
       {/* LEFT: Nav buttons (cleaner style) */}
       <div className="flex items-center gap-2">
         <button
           onClick={handleToday}
-          className="px-4 py-2 rounded-md text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-500 text-white transition shadow-sm hover:shadow-md"
+          className="px-4 py-2 rounded-md text-sm font-semibold bg-gradient-to-r from-indigo-600 to-pink-500 text-white transition shadow-sm hover:shadow-md"
         >
           Today
         </button>
@@ -456,7 +456,7 @@ function CustomToolbar({
       </div>
 
       {/* CENTER: Label (unchanged) */}
-      <h3 className="text-xl font-bold text-purple-700 order-first md:order-none">
+      <h3 className="text-xl font-bold text-indigo-700 order-first md:order-none">
         {formatAgendaLabel()}
       </h3>
 
@@ -469,7 +469,7 @@ function CustomToolbar({
             className={`flex-1 py-2 px-3 rounded-md text-sm font-semibold transition-all duration-300
               ${
                 view === v
-                  ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                  ? "bg-gradient-to-r from-indigo-600 to-pink-500 text-white shadow-md"
                   : "text-gray-600 hover:bg-white"
               }`}
           >

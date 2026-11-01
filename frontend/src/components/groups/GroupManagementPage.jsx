@@ -304,16 +304,16 @@ export default function GroupManagementPage() {
           <main className="py-12 px-4 sm:px-8 max-w-5xl mx-auto">
             <Link
               to={`/group/${groupId}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-600 hover:underline mb-6 transition"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:underline mb-6 transition"
             >
               <IconChevronLeft /> Back to Group
             </Link>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-              <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-orange-500 py-1">
+              <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 py-1">
                 Manage {group?.name}
               </h1>
               {group?.privacy?.toLowerCase() === "public" && (
-                <span className="mt-2 sm:mt-0 bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full">
+                <span className="mt-2 sm:mt-0 bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full">
                   Public Group
                 </span>
               )}
@@ -324,9 +324,9 @@ export default function GroupManagementPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative w-full py-2.5 px-3 sm:px-6 rounded-lg font-semibold text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 ${
+                    className={`relative w-full py-2.5 px-3 sm:px-6 rounded-lg font-semibold text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 ${
                       activeTab === tab.id
-                        ? "bg-white shadow-md text-purple-700"
+                        ? "bg-white shadow-md text-indigo-700"
                         : "text-gray-600 hover:text-gray-900"
                     }`}
                   >
@@ -337,7 +337,7 @@ export default function GroupManagementPage() {
                         <span
                           className={`ml-2 text-xs font-bold py-0.5 px-2 rounded-full ${
                             activeTab === tab.id
-                              ? "bg-purple-100 text-purple-600"
+                              ? "bg-indigo-100 text-indigo-600"
                               : "bg-gray-200 text-gray-600"
                           }`}
                         >
@@ -410,7 +410,7 @@ export default function GroupManagementPage() {
       <p className="text-gray-600 mt-4 max-w-md">{message}</p>
       <Link
         to={`/group/${groupId}`}
-        className="mt-8 inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-lg shadow-purple-500/30 hover:shadow-xl transition-all"
+        className="mt-8 inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl transition-all"
       >
         Back to Group
       </Link>

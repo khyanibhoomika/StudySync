@@ -21,7 +21,7 @@ const GroupMembers = ({ members, ownerId, currentUserRole, onRemoveMember }) => 
             className="flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center font-bold text-purple-700 text-lg">
+              <div className="w-10 h-10 rounded-full bg-indigo-200 flex items-center justify-center font-bold text-indigo-700 text-lg">
                 {displayName.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -34,7 +34,7 @@ const GroupMembers = ({ members, ownerId, currentUserRole, onRemoveMember }) => 
                 className={`text-xs font-bold px-3 py-1 rounded-full ${
                   isOwner
                     ? "text-red-800 bg-red-100"
-                    : "text-purple-700 bg-purple-100"
+                    : "text-indigo-700 bg-indigo-100"
                 }`}
               >
                 {isOwner ? "Admin" : "Member"}
