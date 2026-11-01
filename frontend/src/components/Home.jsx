@@ -27,10 +27,10 @@ function CourseCard({ course }) {
   return (
     <div
       onClick={handleClick}
-      className="group relative h-full w-80 flex-shrink-0 cursor-pointer scroll-snap-align-start rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105"
+      className="group relative flex w-80 flex-shrink-0 cursor-pointer scroll-snap-align-start rounded-2xl p-[2px] transition-all duration-400 hover:-translate-y-2 hover:scale-105"
     >
       <div className="pointer-events-none absolute -inset-3 rounded-2xl z-0 bg-gradient-to-br from-purple-500 to-orange-400 opacity-0 blur-xl group-hover:opacity-60 transition-all duration-400" />
-      <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-md">
+      <div className="relative z-10 flex w-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-md">
         <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-purple-100 to-orange-100 text-3xl shadow-lg">
           {iconMap[course.courseId] || "📚"}
         </div>
