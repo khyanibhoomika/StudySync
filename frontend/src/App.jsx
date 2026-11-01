@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import CourseDetails from "./components/CourseDetails";
 import Home from "./components/Home.jsx";
 import Nav from "./components/Nav.jsx";
 import Collab from "./components/Collab.jsx";
@@ -125,6 +126,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/build-profile" element={<BuildProfile />} />
+          <Route path="/course/:courseId" element={<CourseDetails />} />
 
           {/* 🔐 Authenticated Routes */}
           <Route

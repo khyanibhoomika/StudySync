@@ -28,7 +28,7 @@ const EditGroupDetailsForm = ({
           id="groupName"
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
-          className="mt-1 w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="mt-1 w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           disabled={formSubmitting}
         />
       </div>
@@ -44,14 +44,14 @@ const EditGroupDetailsForm = ({
           rows="4"
           value={groupDesc}
           onChange={(e) => setGroupDesc(e.target.value)}
-          className="mt-1 w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="mt-1 w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           disabled={formSubmitting}
         ></textarea>
       </div>
       <button
         type="submit"
         disabled={formSubmitting}
-        className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-lg shadow-purple-500/30 transition-all hover:opacity-90 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-lg shadow-indigo-500/30 transition-all hover:opacity-90 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {formSubmitting ? "Saving..." : "Save Changes"}
       </button>

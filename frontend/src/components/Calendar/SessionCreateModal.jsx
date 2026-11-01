@@ -198,7 +198,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-gradient-to-br from-white via-purple-50 to-pink-50 rounded-3xl shadow-2xl w-full max-w-[600px] overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-5 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-indigo-600 via-pink-500 to-cyan-400 px-6 py-5 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-white">
             ✨ Create New Session
           </h2>
@@ -214,7 +214,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
         <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
           {/* Topic */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               📚 Topic *
             </label>
             <input
@@ -227,7 +227,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Description */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               📝 Description *
             </label>
             <textarea
@@ -241,7 +241,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
           {/* Course */}
           {!groupId && (
             <div>
-              <label className="font-semibold text-purple-700 text-sm">
+              <label className="font-semibold text-indigo-700 text-sm">
                 📚 Course *
               </label>
               <select
@@ -262,7 +262,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
           {/* Group */}
           {!groupId && (
             <div>
-              <label className="font-semibold text-purple-700 text-sm">
+              <label className="font-semibold text-indigo-700 text-sm">
                 👥 Group *
               </label>
               <select
@@ -283,7 +283,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Organizer */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               👤 Organizer
             </label>
 
@@ -305,7 +305,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Date & Time */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               🕒 Date & Time *
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -343,7 +343,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Session Type */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               🌐 Session Type
             </label>
             <select
@@ -402,7 +402,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
           <button
             onClick={handleCreate}
             disabled={isCreating}
-            className="px-8 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold shadow-lg disabled:opacity-50"
+            className="px-8 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-bold shadow-lg disabled:opacity-50"
           >
             {isCreating ? "Creating..." : "Create Session"}
           </button>

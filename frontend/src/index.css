@@ -107,7 +107,7 @@ body .rbc-month-view .rbc-event-content {
 /* --- "+X More" Link Style --- */
 .rbc-show-more {
   background-color: #f3e8ff !important; /* light-purple-100 */
-  color: #6b21a8 !important; /* purple-700 */
+  color: #6b21a8 !important; /* indigo-700 */
   font-weight: 600 !important;
   border-radius: 4px !important;
   margin-top: 2px !important;

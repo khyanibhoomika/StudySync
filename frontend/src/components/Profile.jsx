@@ -29,7 +29,7 @@ function LabeledInput({
         type={type}
         step={step}
         disabled={disabled}
-        className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-purple-400 transition disabled:bg-gray-100 disabled:cursor-not-allowed"
+        className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400 transition disabled:bg-gray-100 disabled:cursor-not-allowed"
       />
     </div>
   );
@@ -314,7 +314,7 @@ export default function Profile() {
                 htmlFor="profile-pic-upload"
                 className="cursor-pointer relative"
               >
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-orange-400 p-1 mb-4">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 p-1 mb-4">
                   <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
                     {profile.profilePicUrl ? (
                       <img
@@ -367,7 +367,7 @@ export default function Profile() {
             </div>
 
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="font-semibold mb-4 text-lg text-purple-700">
+              <h3 className="font-semibold mb-4 text-lg text-indigo-700">
                 Contact Information
               </h3>
               <div className="space-y-4">
@@ -399,7 +399,7 @@ export default function Profile() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col gap-6">
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="text-xl font-bold mb-6 text-purple-700">
+              <h3 className="text-xl font-bold mb-6 text-indigo-700">
                 Academic History
               </h3>
 
@@ -516,13 +516,13 @@ export default function Profile() {
             <button
               onClick={saveChanges}
               disabled={saving}
-              className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow-lg hover:from-purple-700 hover:to-orange-600 transition disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow-lg hover:from-indigo-700 hover:to-orange-600 transition disabled:opacity-50"
             >
               {saving ? "Saving..." : "Save All Changes"}
             </button>
 
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="text-xl font-bold mb-6 text-purple-700">
+              <h3 className="text-xl font-bold mb-6 text-indigo-700">
                 Change Password
               </h3>
               <div className="space-y-4">

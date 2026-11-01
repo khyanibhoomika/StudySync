@@ -34,7 +34,7 @@ function CourseCard({ course, isEnrolled, onEnrollmentChange }) {
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 relative overflow-hidden">
       {/* Decorative Color Bar */}
-      <div className="absolute top-0 left-0 h-2 w-full bg-gradient-to-r from-purple-500 to-orange-400"></div>
+      <div className="absolute top-0 left-0 h-2 w-full bg-gradient-to-r from-indigo-500 to-cyan-400"></div>
 
       {isEnrolled && (
         <div className="absolute top-4 right-4 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full">
@@ -57,7 +57,7 @@ function CourseCard({ course, isEnrolled, onEnrollmentChange }) {
             {/* Primary Action: Find Groups */}
             <Link
               to={`/my-groups?course=${course.courseId}`} // Links to groups page, pre-filtered (you'll need to add this filter logic to MyGroups)
-              className="block w-full text-center py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-md hover:opacity-90 transition-all transform hover:scale-105"
+              className="block w-full text-center py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-md hover:opacity-90 transition-all transform hover:scale-105"
             >
               Find Groups
             </Link>
@@ -84,7 +84,7 @@ function CourseCard({ course, isEnrolled, onEnrollmentChange }) {
           <button
             onClick={() => handleAction("enroll")}
             disabled={isSubmitting}
-            className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50"
+            className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50"
           >
             {isSubmitting ? "Processing..." : "Enroll Now"}
           </button>
@@ -178,7 +178,7 @@ const MyCourses = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-800">
-            Course <span className="text-purple-600">Catalog</span>
+            Course <span className="text-indigo-600">Catalog</span>
           </h1>
           <p className="text-lg text-gray-500 mt-2">
             Manage your subjects or discover new ones to join.
@@ -191,8 +191,8 @@ const MyCourses = () => {
             onClick={() => setActiveTab("enrolled")}
             className={`py-3 px-6 text-md font-semibold focus:outline-none transition-colors duration-200 ${
               activeTab === "enrolled"
-                ? "border-b-2 border-purple-600 text-purple-600"
-                : "text-gray-500 hover:text-purple-500"
+                ? "border-b-2 border-indigo-600 text-indigo-600"
+                : "text-gray-500 hover:text-indigo-500"
             }`}
           >
             My Courses ({enrolledCourses.length})
@@ -201,8 +201,8 @@ const MyCourses = () => {
             onClick={() => setActiveTab("available")}
             className={`py-3 px-6 text-md font-semibold focus:outline-none transition-colors duration-200 ${
               activeTab === "available"
-                ? "border-b-2 border-purple-600 text-purple-600"
-                : "text-gray-500 hover:text-purple-500"
+                ? "border-b-2 border-indigo-600 text-indigo-600"
+                : "text-gray-500 hover:text-indigo-500"
             }`}
           >
             Available Courses ({unenrolledCourses.length})

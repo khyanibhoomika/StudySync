@@ -246,7 +246,7 @@ export default function GroupDetailPage({ openFloatingChat }) {
         <p className="text-gray-600 max-w-md">{error}</p>
         <Link
           to="/my-groups"
-          className="mt-6 px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition"
+          className="mt-6 px-6 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
         >
           Back to My Groups
         </Link>
@@ -286,7 +286,7 @@ export default function GroupDetailPage({ openFloatingChat }) {
           <div className="flex justify-between items-center mb-4">
             <Link
               to="/my-groups"
-              className="text-sm font-semibold text-purple-600 hover:underline"
+              className="text-sm font-semibold text-indigo-600 hover:underline"
             >
               &larr; Back to Groups
             </Link>
@@ -336,7 +336,7 @@ export default function GroupDetailPage({ openFloatingChat }) {
           {/* Group Info at Top */}
           <div className="mb-6 px-2">
             <h1 className="text-2xl font-bold text-gray-800">{group.name}</h1>
-            <p className="text-md text-purple-600 font-semibold mt-1">
+            <p className="text-md text-indigo-600 font-semibold mt-1">
               {group.associatedCourse?.courseName || "General"}
             </p>
           </div>
@@ -367,7 +367,7 @@ export default function GroupDetailPage({ openFloatingChat }) {
            items-center justify-center
            bg-gradient-to-br from-[#4c1d95]/50 via-[#5b21b6]/50 to-[#3730a3]/50
            backdrop-blur-xl
-           border border-purple-400/30
+           border border-indigo-400/30
            text-purple-200
            rounded-r-xl
            shadow-[0_0_12px_rgba(124,58,237,0.4)]

@@ -8,7 +8,7 @@ const AuthButtons = () => (
   <div className="flex flex-col sm:flex-row gap-4 items-center py-2">
     <Link
       to="/login"
-      className="text-white font-bold bg-purple-700 hover:bg-purple-800 px-6 py-2 rounded-xl shadow transition w-full sm:w-auto text-center"
+      className="text-white font-bold bg-indigo-700 hover:bg-purple-800 px-6 py-2 rounded-xl shadow transition w-full sm:w-auto text-center"
     >
       Login
     </Link>
@@ -63,19 +63,19 @@ const ProfileMenu = ({ userName, profilePic, handleLogout }) => {
       </button>
       {menuOpen && (
         <div className="absolute right-0 mt-3 w-60 bg-white rounded-2xl shadow-xl p-5 z-50 border border-purple-100">
-          <div className="text-lg font-extrabold bg-gradient-to-r from-purple-700 to-orange-400 bg-clip-text text-transparent mb-4 text-center">
+          <div className="text-lg font-extrabold bg-gradient-to-r from-indigo-700 to-cyan-400 bg-clip-text text-transparent mb-4 text-center">
             {userName}
           </div>
           {location.pathname === "/profile" ? (
             <button
-              className="w-full py-2 mb-2 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition"
+              className="w-full py-2 mb-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition"
               onClick={() => navigateAndClose("/dashboard")}
             >
               Dashboard
             </button>
           ) : (
             <button
-              className="w-full py-2 mb-2 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition"
+              className="w-full py-2 mb-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition"
               onClick={() => navigateAndClose("/profile")}
             >
               Profile
@@ -123,7 +123,7 @@ function NotificationItem({ notification, onItemClick }) {
         </p>
         <p className="text-xs text-gray-400">{timeAgo}</p>
       </div>
-      {!isRead && <div className="w-3 h-3 bg-purple-600 rounded-full" />}
+      {!isRead && <div className="w-3 h-3 bg-indigo-600 rounded-full" />}
     </motion.div>
   );
 }
@@ -189,7 +189,7 @@ const NotificationBell = ({
           />
         </svg>
         {computedUnread > 0 && (
-          <span className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center border-2 border-purple-600 -mt-1 -mr-1">
+          <span className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center border-2 border-indigo-600 -mt-1 -mr-1">
             {badgeText}
           </span>
         )}
@@ -204,7 +204,7 @@ const NotificationBell = ({
             className="absolute right-0 mt-3 w-80 bg-white rounded-2xl shadow-xl overflow-hidden z-50 border border-purple-200"
           >
             <div className="font-bold p-4 border-b">Notifications</div>
-            <div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-400">
+            <div className="max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-400">
               {unreadList.length > 0 ? (
                 unreadList
                   .slice(0, 5)
@@ -223,7 +223,7 @@ const NotificationBell = ({
             </div>
             <Link
               to="/notifications"
-              className="block p-3 text-center text-sm font-semibold text-purple-600 hover:bg-gray-100"
+              className="block p-3 text-center text-sm font-semibold text-indigo-600 hover:bg-gray-100"
               onClick={() => setIsOpen(false)}
             >
               View All Notifications
@@ -338,7 +338,7 @@ export default function Nav({
   return (
     <>
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full h-[9vh] z-50 bg-gradient-to-r from-purple-600 to-orange-500 shadow-lg backdrop-blur-xl bg-opacity-90">
+      <nav className="fixed top-0 left-0 w-full h-[9vh] z-50 bg-gradient-to-r from-indigo-600 to-cyan-500 shadow-lg backdrop-blur-xl bg-opacity-90">
         <div className="flex items-center justify-between px-4 sm:px-10 h-full">
           <h1 className="text-2xl font-black text-white tracking-wide drop-shadow select-none">
             StudySync
@@ -378,7 +378,7 @@ export default function Nav({
               : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
-          <div className="flex flex-col gap-4 items-center bg-gradient-to-b from-purple-700 to-orange-500 w-full py-6">
+          <div className="flex flex-col gap-4 items-center bg-gradient-to-b from-indigo-700 to-cyan-500 w-full py-6">
             <NavLinks
               isLoggedIn={isLoggedIn}
               onNavigate={() => setMenuOpen(false)}

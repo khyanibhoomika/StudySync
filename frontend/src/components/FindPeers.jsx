@@ -200,12 +200,12 @@ function SuggestedPeersView({
           placeholder="Search by name..."
           value={searchTerm}
           onChange={(e) => onSearchTermChange(e.target.value)}
-          className="flex-grow px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500"
+          className="flex-grow px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500"
         />
         <select
           value={selectedCourse}
           onChange={(e) => onCourseChange(e.target.value)}
-          className="md:w-1/3 px-4 py-2 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-purple-500"
+          className="md:w-1/3 px-4 py-2 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-indigo-500"
         >
           {allCourses.map((course) => (
             <option key={course} value={course}>
@@ -259,9 +259,9 @@ function AllPeersView({
           placeholder="Search all peers..."
           value={searchTerm}
           onChange={(e) => onSearchTermChange(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 mb-3"
+          className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 mb-3"
         />
-        <div className="flex-1 overflow-y-auto space-y-2 pr-1 scrollbar-thin scrollbar-thumb-purple-400 scrollbar-track-purple-100">
+        <div className="flex-1 overflow-y-auto space-y-2 pr-1 scrollbar-thin scrollbar-thumb-indigo-400 scrollbar-track-purple-100">
           {peers.length > 0 ? (
             peers.map((peer) => (
               <PeerListItem
@@ -319,8 +319,8 @@ function TabButton({ label, isActive, onClick }) {
       onClick={onClick}
       className={`pb-2 text-lg font-semibold transition-colors ${
         isActive
-          ? "text-purple-600 border-b-2 border-orange-500"
-          : "text-gray-500 hover:text-purple-500"
+          ? "text-indigo-600 border-b-2 border-cyan-500"
+          : "text-gray-500 hover:text-indigo-500"
       }`}
     >
       {label}
@@ -338,7 +338,7 @@ function PeerCard({ peer, onMessage, onViewProfile }) {
     <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 flex flex-col transition-all hover:shadow-xl hover:-translate-y-1">
       {/* Top Row */}
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-16 h-16 rounded-full bg-purple-100 text-purple-700 font-bold text-3xl flex items-center justify-center flex-shrink-0">
+        <div className="w-16 h-16 rounded-full bg-purple-100 text-indigo-700 font-bold text-3xl flex items-center justify-center flex-shrink-0">
           {user.name.charAt(0).toUpperCase()}
         </div>
         <div className="flex-1 min-w-0">
@@ -348,7 +348,7 @@ function PeerCard({ peer, onMessage, onViewProfile }) {
           <p className="text-sm text-gray-500 truncate">
             {user.universityName ?? "Student"}
           </p>
-          <span className="text-purple-600 font-semibold text-sm">
+          <span className="text-indigo-600 font-semibold text-sm">
             {matchScore}% match
           </span>
         </div>
@@ -385,7 +385,7 @@ function PeerCard({ peer, onMessage, onViewProfile }) {
         </button>
         <button
           onClick={onMessage}
-          className="flex-1 py-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+          className="flex-1 py-2 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
         >
           Message
         </button>
@@ -406,7 +406,7 @@ function PeerListItem({ peer, isSelected, onClick }) {
         isSelected ? "bg-purple-100" : "hover:bg-purple-50"
       }`}
     >
-      <div className="w-12 h-12 rounded-full bg-purple-100 text-purple-700 font-bold text-xl flex items-center justify-center flex-shrink-0">
+      <div className="w-12 h-12 rounded-full bg-purple-100 text-indigo-700 font-bold text-xl flex items-center justify-center flex-shrink-0">
         {user.name.charAt(0).toUpperCase()}
       </div>
       <div className="flex-1 min-w-0">
@@ -437,7 +437,7 @@ function ChatPreview({ peer }) {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center gap-4 pb-4 border-b">
-        <div className="w-12 h-12 rounded-full bg-purple-100 text-purple-700 font-bold text-xl flex items-center justify-center flex-shrink-0">
+        <div className="w-12 h-12 rounded-full bg-purple-100 text-indigo-700 font-bold text-xl flex items-center justify-center flex-shrink-0">
           {peer.user.name.charAt(0).toUpperCase()}
         </div>
 
@@ -457,9 +457,9 @@ function ChatPreview({ peer }) {
         <input
           type="text"
           placeholder="Type a message…"
-          className="flex-1 px-4 py-2 rounded-lg bg-gray-100 focus:ring-2 focus:ring-purple-500 border border-transparent focus:border-purple-300"
+          className="flex-1 px-4 py-2 rounded-lg bg-gray-100 focus:ring-2 focus:ring-indigo-500 border border-transparent focus:border-purple-300"
         />
-        <button className="px-5 py-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold">
+        <button className="px-5 py-2 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold">
           Send
         </button>
       </div>

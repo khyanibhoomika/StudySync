@@ -26,7 +26,7 @@ const RequesterProfileModal = ({ user, onClose }) => {
         >
           <div className="flex flex-col items-center p-8">
             <div className="relative mb-4">
-              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-purple-100 text-5xl font-bold text-purple-600 ring-4 ring-white">
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-purple-100 text-5xl font-bold text-indigo-600 ring-4 ring-white">
                 {userName.charAt(0).toUpperCase()}
               </div>
             </div>
@@ -41,7 +41,7 @@ const RequesterProfileModal = ({ user, onClose }) => {
             </div>
             <button
               onClick={onClose}
-              className="mt-8 w-full rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 px-6 py-3 text-lg font-semibold text-white shadow-lg shadow-purple-500/30 transition-all hover:opacity-90 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-purple-500/50"
+              className="mt-8 w-full rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 px-6 py-3 text-lg font-semibold text-white shadow-lg shadow-indigo-500/30 transition-all hover:opacity-90 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-500/50"
             >
               Close
             </button>

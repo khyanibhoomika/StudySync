@@ -21,17 +21,17 @@ const localizer = momentLocalizer(moment);
 // --- ✅ UPDATED: Consistent Theme Colors (Lighter) ---
 const themeColors = {
   primary: {
-    base: "bg-gradient-to-r from-purple-600 to-pink-500",
-    hover: "hover:from-purple-700 hover:to-pink-600",
+    base: "bg-gradient-to-r from-indigo-600 to-pink-500",
+    hover: "hover:from-indigo-700 hover:to-pink-600",
     text: "text-white",
   },
   gradients: {
     // Replaced blue with a light indigo/purple
-    online: "bg-gradient-to-r from-indigo-500 to-purple-500",
+    online: "bg-gradient-to-r from-indigo-500 to-indigo-500",
     // Lighter orange/pink
-    offline: "bg-gradient-to-r from-orange-500 to-pink-500",
+    offline: "bg-gradient-to-r from-cyan-500 to-pink-500",
     // Main purple/pink
-    hybrid: "bg-gradient-to-r from-purple-600 to-pink-500",
+    hybrid: "bg-gradient-to-r from-indigo-600 to-pink-500",
     default: "bg-gradient-to-r from-gray-500 to-gray-600",
   },
 };
@@ -209,7 +209,7 @@ export default function SessionsPage({ userRole, groupId }) {
 
   if (loading) {
     return (
-      <div className="p-6 text-purple-700 font-semibold">
+      <div className="p-6 text-indigo-700 font-semibold">
         Loading sessions...
       </div>
     );
@@ -227,7 +227,7 @@ export default function SessionsPage({ userRole, groupId }) {
         </h1>
         {isAdmin && (
           <button
-            className={`${themeColors.primary.base} ${themeColors.primary.text} ${themeColors.primary.hover} px-6 py-2 rounded-full shadow-lg shadow-purple-500/30 transform transition hover:scale-105`}
+            className={`${themeColors.primary.base} ${themeColors.primary.text} ${themeColors.primary.hover} px-6 py-2 rounded-full shadow-lg shadow-indigo-500/30 transform transition hover:scale-105`}
             onClick={() => setShowCreateModal(true)}
           >
             + Add Session
@@ -394,7 +394,7 @@ function CustomToolbar({
       <div className="flex items-center gap-2">
         <button
           onClick={handleToday}
-          className="px-4 py-2 rounded-md text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-500 text-white transition shadow-sm hover:shadow-md"
+          className="px-4 py-2 rounded-md text-sm font-semibold bg-gradient-to-r from-indigo-600 to-pink-500 text-white transition shadow-sm hover:shadow-md"
         >
           Today
         </button>
@@ -413,7 +413,7 @@ function CustomToolbar({
       </div>
 
       {/* CENTER: Label */}
-      <h3 className="text-xl font-bold text-purple-700 order-first md:order-none">
+      <h3 className="text-xl font-bold text-indigo-700 order-first md:order-none">
         {formatAgendaLabel()}
       </h3>
 
@@ -426,7 +426,7 @@ function CustomToolbar({
             className={`flex-1 py-2 px-3 rounded-md text-sm font-semibold transition-all duration-300
               ${
                 view === v
-                  ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                  ? "bg-gradient-to-r from-indigo-600 to-pink-500 text-white shadow-md"
                   : "text-gray-600 hover:bg-white"
               }`}
           >
@@ -506,7 +506,7 @@ function AgendaEventCard({ event }) {
                 ? "text-indigo-700"
                 : event.type === "offline"
                 ? "text-orange-700"
-                : "text-purple-700"
+                : "text-indigo-700"
             }`}
           >
             {event.type}
@@ -536,7 +536,7 @@ function AgendaEventCard({ event }) {
 /* ✅ Custom Sticky Agenda Date Header */
 function AgendaHeader({ label }) {
   return (
-    <div className="sticky top-0 z-20 bg-gradient-to-r from-purple-700 to-pink-500 px-6 py-3 rounded-lg text-xl font-semibold text-white shadow mb-2 mt-6">
+    <div className="sticky top-0 z-20 bg-gradient-to-r from-indigo-700 to-pink-500 px-6 py-3 rounded-lg text-xl font-semibold text-white shadow mb-2 mt-6">
       {label}
     </div>
   );
@@ -571,7 +571,7 @@ function SessionTabs({ activeTab, setActiveTab }) {
           className={`w-full px-4 py-2 rounded-md text-sm font-semibold transition-all duration-300
             ${
               activeTab === type
-                ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                ? "bg-gradient-to-r from-indigo-600 to-pink-500 text-white shadow-md"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
         >
@@ -648,12 +648,12 @@ function SessionCard({ session, onDelete, isAdmin, currentUserId, onPreview }) {
 
       <div className="mt-4 flex justify-between items-center">
         <button
-          className="px-5 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md hover:scale-105 transition"
+          className="px-5 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-indigo-600 to-pink-500 text-white shadow-md hover:scale-105 transition"
           onClick={onPreview}
         >
           View Details
         </button>
-        <span className="text-xs font-medium text-purple-700 bg-purple-100 px-3 py-1 rounded-full capitalize">
+        <span className="text-xs font-medium text-indigo-700 bg-purple-100 px-3 py-1 rounded-full capitalize">
           {session.type}
         </span>
       </div>

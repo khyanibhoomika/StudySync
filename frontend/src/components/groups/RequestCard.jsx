@@ -12,7 +12,7 @@ const RequestCard = ({
         <button
           type="button"
           onClick={() => setSelectedUser(request.user)}
-          className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-700 text-xl mr-4 flex-shrink-0 transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+          className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center font-bold text-indigo-700 text-xl mr-4 flex-shrink-0 transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           {request.user?.name?.charAt(0).toUpperCase() || "?"}
         </button>

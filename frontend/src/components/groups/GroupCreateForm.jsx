@@ -108,7 +108,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
         {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-800">
-            Create a <span className="text-purple-600">New Study Group</span>
+            Create a <span className="text-indigo-600">New Study Group</span>
           </h2>
           <p className="mt-2 text-gray-500">
             Fill out the details below to get your group started.
@@ -129,7 +129,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
               placeholder="e.g., Quantum Physics Crew"
               required
             />
@@ -146,7 +146,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows="4"
-              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm resize-none focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+              className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm resize-none focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
               placeholder="Describe the main goals and topics of your study group."
               required
             />
@@ -163,7 +163,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
                 id="course"
                 value={associatedCourseId}
                 onChange={(e) => setAssociatedCourseId(e.target.value)}
-                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200 bg-white"
+                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200 bg-white"
               >
                 {(courses || []).map((course) => (
                   <option key={course.courseId} value={course.courseId}>
@@ -186,7 +186,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
                 onChange={(e) => setMemberLimit(parseInt(e.target.value, 10))}
                 min="2"
                 max="50"
-                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
               />
             </div>
           </div>
@@ -202,7 +202,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
                 id="privacy"
                 value={privacy}
                 onChange={(e) => setPrivacy(e.target.value)}
-                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200 bg-white"
+                className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200 bg-white"
               >
                 <option value="public">Public</option>
                 <option value="private">Private</option>
@@ -222,7 +222,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
                     id="passkey"
                     value={passkey}
                     onChange={handlePasskeyChange}
-                    className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+                    className="w-full rounded-lg border-gray-300 p-3 text-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
                     placeholder="Create a passkey"
                   />
                   <button
@@ -308,7 +308,7 @@ const GroupCreateForm = ({ courses = [], onSubmit, onCancel }) => {
             </button>
             <button
               type="submit"
-              className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105"
+              className="bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105"
             >
               Create Group
             </button>

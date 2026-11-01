@@ -134,7 +134,7 @@ const CenteredMessage = ({ text, error }) => (
 const Header = ({ userName }) => (
   <div className="mb-10">
     <h1 className="text-4xl font-bold text-gray-800">
-      Welcome back, <span className="text-purple-600">{userName}</span>! 👋
+      Welcome back, <span className="text-indigo-600">{userName}</span>! 👋
     </h1>
     <p className="mt-1 text-lg text-gray-500">
       Here's your personal hub for learning and collaboration.
@@ -150,7 +150,7 @@ const SummaryLink = ({ to, ...props }) => (
 
 function SummaryCard({ icon, title, value, color }) {
   const colors = {
-    purple: "from-purple-500 to-indigo-500",
+    purple: "from-indigo-500 to-indigo-500",
     blue: "from-blue-500 to-cyan-500",
     green: "from-emerald-500 to-green-500",
   };
@@ -228,7 +228,7 @@ const SectionTitle = ({ title }) => (
 const GroupSection = ({ groups }) => (
   <SectionWrapper title="My Study Groups">
     {groups.length > 0 ? (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-400 scrollbar-track-purple-100 hover:scrollbar-thumb-purple-500">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-indigo-400 scrollbar-track-purple-100 hover:scrollbar-thumb-indigo-500">
         {groups.map((g) => (
           <GroupCard key={g.groupId} group={g} />
         ))}
@@ -257,7 +257,7 @@ const NotificationSection = ({ notifications }) => (
     )}
     <Link
       to="/notifications"
-      className="mt-4 inline-block text-purple-600 font-semibold hover:underline"
+      className="mt-4 inline-block text-indigo-600 font-semibold hover:underline"
     >
       View All Notifications
     </Link>
@@ -377,7 +377,7 @@ const CalendarSection = ({ calendar }) => {
 
           <Link
             to="/calendar"
-            className="mt-4 inline-block text-purple-600 font-semibold hover:underline"
+            className="mt-4 inline-block text-indigo-600 font-semibold hover:underline"
           >
             Go to Full Calendar
           </Link>
@@ -389,7 +389,7 @@ const CalendarSection = ({ calendar }) => {
           </p>
           <Link
             to="/calendar"
-            className="mt-4 inline-block text-purple-600 font-semibold hover:underline"
+            className="mt-4 inline-block text-indigo-600 font-semibold hover:underline"
           >
             Go to Full Calendar
           </Link>
@@ -411,7 +411,7 @@ const SectionWrapper = ({ title, children }) => (
 function GroupCard({ group }) {
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-200 flex flex-col hover:shadow-2xl hover:-translate-y-1 relative overflow-hidden transition-all">
-      <div className="absolute top-0 left-0 h-2 w-full bg-gradient-to-r from-purple-500 to-orange-400"></div>
+      <div className="absolute top-0 left-0 h-2 w-full bg-gradient-to-r from-indigo-500 to-cyan-400"></div>
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex-grow">
           <h4 className="font-bold text-xl text-gray-800">{group.name}</h4>
@@ -427,7 +427,7 @@ function GroupCard({ group }) {
         <div className="mt-6 pt-4 border-t border-gray-100 flex">
           <Link
             to={`/group/${group.groupId}`}
-            className="flex-1 text-center py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold shadow-md hover:opacity-90 hover:scale-105 transition-all"
+            className="flex-1 text-center py-2 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold shadow-md hover:opacity-90 hover:scale-105 transition-all"
           >
             View Group
           </Link>
@@ -478,7 +478,7 @@ function NotificationItem({ icon, message, timeAgo, isRead, createdAt }) {
         <p className="text-xs text-gray-400 mt-1">{displayTime}</p>
       </div>
       {!isRead && (
-        <div className="w-2.5 h-2.5 bg-purple-500 rounded-full self-center flex-shrink-0"></div>
+        <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full self-center flex-shrink-0"></div>
       )}
     </div>
   );
@@ -519,7 +519,7 @@ function CalendarItem({
 
   return (
     <div className="flex rounded-xl shadow-lg bg-white overflow-hidden border border-gray-200">
-      <div className="flex-shrink-0 w-24 p-4 flex flex-col items-center justify-center bg-gradient-to-b from-purple-600 to-pink-500 text-white">
+      <div className="flex-shrink-0 w-24 p-4 flex flex-col items-center justify-center bg-gradient-to-b from-indigo-600 to-pink-500 text-white">
         <div className="text-2xl font-bold tracking-tight">
           {startStr.split(" ")[0]}
         </div>
@@ -569,7 +569,7 @@ const EmptyState = ({ title, message, actionLabel, actionLink }) => (
     <p className="text-gray-500 mt-2 mb-6">{message}</p>
     <Link
       to={actionLink}
-      className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:opacity-90 hover:scale-105 transition-all"
+      className="bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:opacity-90 hover:scale-105 transition-all"
     >
       {actionLabel}
     </Link>

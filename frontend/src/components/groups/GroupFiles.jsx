@@ -129,7 +129,7 @@ const GroupFiles = ({ groupId, userRole, onDocumentCountChange }) => {
             placeholder="Search documents..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 
@@ -153,7 +153,7 @@ const GroupFiles = ({ groupId, userRole, onDocumentCountChange }) => {
                   </div>
                   <button
                     onClick={() => handleDownload(file.id)}
-                    className="px-3 py-1 text-sm bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+                    className="px-3 py-1 text-sm bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
                   >
                     Download
                   </button>

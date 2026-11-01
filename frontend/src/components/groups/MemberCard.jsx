@@ -29,7 +29,7 @@ const MemberCard = ({
   return (
     <div className="flex flex-col sm:flex-row justify-between sm:items-center p-4 bg-white rounded-xl gap-2 border border-gray-100 hover:border-gray-200 transition">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-700 text-lg flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-indigo-700 text-lg flex-shrink-0">
           {memberName.charAt(0).toUpperCase()}
         </div>
         <div>
@@ -47,7 +47,7 @@ const MemberCard = ({
             Remove
           </button>
         ) : isGroupCreator ? (
-          <span className="text-sm font-semibold text-purple-600 px-3">
+          <span className="text-sm font-semibold text-indigo-600 px-3">
             Group Creator
           </span>
         ) : (

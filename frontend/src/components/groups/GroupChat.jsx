@@ -417,9 +417,9 @@ const GroupChat = ({
           type="button"
           onDoubleClick={handleGroupButtonDoubleClickOrDrag}
           onDragStart={handleGroupButtonDoubleClickOrDrag}
-          className="ml-3 px-6 py-2 rounded-xl shadow-lg shadow-orange-500/30 font-bold text-white
-                     bg-gradient-to-r from-purple-600 to-orange-500
-                     hover:from-purple-700 hover:to-orange-600 transition-all transform hover:scale-105 hover:shadow-orange-400/50"
+          className="ml-3 px-6 py-2 rounded-xl shadow-lg shadow-cyan-500/30 font-bold text-white
+                     bg-gradient-to-r from-indigo-600 to-cyan-500
+                     hover:from-indigo-700 hover:to-orange-600 transition-all transform hover:scale-105 hover:shadow-cyan-400/50"
         >
           {groupName || "Group Chat"}
         </button>
@@ -433,11 +433,11 @@ const GroupChat = ({
               placeholder="Search messages..."
               className="block w-full pl-10 pr-4 py-2 bg-white text-purple-800 text-sm font-medium
                          border-2 border-purple-100 rounded-full
-                         shadow-sm shadow-purple-500/10
-                         focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-300
+                         shadow-sm shadow-indigo-500/10
+                         focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-purple-300
                          transition-all duration-300"
             />
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-indigo-400 pointer-events-none">
               <svg
                 width={18}
                 height={18}
@@ -604,7 +604,7 @@ const GroupChat = ({
                         </div>
 
                         {!isOwn && (
-                          <div className="text-xs font-semibold text-purple-700 mb-1">
+                          <div className="text-xs font-semibold text-indigo-700 mb-1">
                             {m.senderName}
                           </div>
                         )}
@@ -638,7 +638,7 @@ const GroupChat = ({
                             <button
                               className={`ml-2 underline ${
                                 isOwn
-                                  ? "text-purple-700 hover:text-purple-900" // Dark text
+                                  ? "text-indigo-700 hover:text-purple-900" // Dark text
                                   : "text-blue-600 hover:text-blue-800"
                               }`}
                               onClick={async () => {
@@ -704,7 +704,7 @@ const GroupChat = ({
           </span>
           <button
             onClick={() => setReplyTo(null)}
-            className="text-xs p-1 text-purple-700"
+            className="text-xs p-1 text-indigo-700"
           >
             Cancel
           </button>
@@ -719,13 +719,13 @@ const GroupChat = ({
         >
           <button
             type="button"
-            className="p-2 rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition"
+            className="p-2 rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-purple-50 transition"
             onClick={() => setShowPollForm(true)}
             title="Create Poll"
           >
             <IconPoll />
           </button>
-          <label className="p-2 cursor-pointer rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition">
+          <label className="p-2 cursor-pointer rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-purple-50 transition">
             <IconClip />
             <input
               type="file"
@@ -762,7 +762,7 @@ const GroupChat = ({
           </label>
           <button
             type="button"
-            className="p-2 rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition"
+            className="p-2 rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-purple-50 transition"
             onClick={() => setShowEmoji((v) => !v)}
             title="Emoji"
           >
@@ -772,7 +772,7 @@ const GroupChat = ({
             type="text"
             placeholder="Type a message..."
             className="flex-1 px-4 py-2 bg-white border border-gray-300 rounded-full text-purple-800
-                       focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 transition"
+                       focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-400 transition"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
@@ -780,18 +780,18 @@ const GroupChat = ({
           {/* UPDATED SEND BUTTON */}
           <button
             type="submit"
-            className="rounded-full font-semibold text-white shadow-xl shadow-purple-500/60 flex items-center justify-center
+            className="rounded-full font-semibold text-white shadow-xl shadow-indigo-500/60 flex items-center justify-center
                        w-11 h-11
-                       bg-purple-500
+                       bg-indigo-500
                        p-1
                        transition-all duration-100 ease-in
-                       hover:shadow-purple-600/80
+                       hover:shadow-indigo-600/80
                        active:scale-90 active:shadow-inner
                        disabled:opacity-50 disabled:shadow-none"
             disabled={!input.trim()}
           >
             {/* Inner Circle */}
-            <div className="w-full h-full rounded-full bg-gradient-to-r from-orange-400 to-pink-400 flex items-center justify-center">
+            <div className="w-full h-full rounded-full bg-gradient-to-r from-cyan-400 to-pink-400 flex items-center justify-center">
               <IconSend
                 size={
                   window.innerWidth < 400

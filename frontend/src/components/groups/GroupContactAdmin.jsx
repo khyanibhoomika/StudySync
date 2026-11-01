@@ -21,7 +21,7 @@ const GroupContactAdmin = () => {
             <input
               type="text"
               id="subject"
-              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-purple-400"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
               placeholder="e.g., Question about midterm"
               required
             />
@@ -36,7 +36,7 @@ const GroupContactAdmin = () => {
             <textarea
               id="message"
               rows="6"
-              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-purple-400"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
               placeholder="Please describe your issue or question..."
               required
             ></textarea>
@@ -44,7 +44,7 @@ const GroupContactAdmin = () => {
           <div className="text-right">
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition"
+              className="px-6 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
             >
               Send Message
             </button>

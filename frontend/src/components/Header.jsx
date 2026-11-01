@@ -13,10 +13,10 @@ export default function DashboardHeader() {
         />
       </div>
       <div className="flex items-center gap-4 ml-8">
-        <button className="bg-gradient-to-r from-purple-700 to-orange-500 text-white px-5 py-2 rounded-xl font-bold shadow hover:scale-105 transition font-semibold">
+        <button className="bg-gradient-to-r from-indigo-700 to-cyan-500 text-white px-5 py-2 rounded-xl font-bold shadow hover:scale-105 transition font-semibold">
           + Create Group
         </button>
-        <button className="border-2 border-orange-400 text-orange-500 px-5 py-2 rounded-xl font-bold shadow-sm hover:bg-orange-50">
+        <button className="border-2 border-cyan-400 text-cyan-500 px-5 py-2 rounded-xl font-bold shadow-sm hover:bg-orange-50">
           Open Chat
         </button>
         <ProfileDropdown />
@@ -86,7 +86,7 @@ function ProfileDropdown() {
             {fullname}
           </div>
           <button
-            className="w-full py-2 my-2 bg-gradient-to-r from-purple-600 to-orange-400 text-white font-bold rounded-lg shadow hover:from-purple-700 hover:to-orange-500"
+            className="w-full py-2 my-2 bg-gradient-to-r from-indigo-600 to-cyan-400 text-white font-bold rounded-lg shadow hover:from-indigo-700 hover:to-cyan-500"
             onClick={() => {
               setOpen(false);
               navigate("/profile");

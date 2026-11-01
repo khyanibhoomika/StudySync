@@ -9,7 +9,7 @@ const InputField = ({ icon, ...props }) => (
     </div>
     <input
       {...props}
-      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
     />
   </div>
 );
@@ -18,7 +18,7 @@ const InputField = ({ icon, ...props }) => (
 const AuthButton = ({ children, ...props }) => (
   <button
     {...props}
-    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
   >
     {children}
   </button>
@@ -122,7 +122,7 @@ export default function Login() {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-800">
-              Welcome <span className="text-purple-600">Back!</span>
+              Welcome <span className="text-indigo-600">Back!</span>
             </h2>
             <p className="mt-2 text-gray-500">
               Sign in to continue your journey.
@@ -204,7 +204,7 @@ export default function Login() {
           <div className="flex justify-between items-center text-sm">
             <Link
               to="/signup"
-              className="font-semibold text-purple-600 hover:underline"
+              className="font-semibold text-indigo-600 hover:underline"
             >
               Create an account
             </Link>

@@ -19,7 +19,7 @@ export default function DateSessionsModal({ selectedDate, events, onClose }) {
           </h2>
           <button
             onClick={onClose}
-            className="text-purple-600 hover:bg-purple-100 p-2 rounded-full transition"
+            className="text-indigo-600 hover:bg-purple-100 p-2 rounded-full transition"
           >
             ✕
           </button>
@@ -38,13 +38,13 @@ export default function DateSessionsModal({ selectedDate, events, onClose }) {
               >
                 <h3 className="font-bold text-lg text-purple-800 mb-2">{event.title}</h3>
                 <p className="text-gray-700 mb-2">{event.description}</p>
-                <p className="text-purple-700 font-semibold mb-1">
+                <p className="text-indigo-700 font-semibold mb-1">
                   👥 Group: <span className="font-normal">{event.groupName}</span>
                 </p>
-                <p className="text-purple-700 font-semibold mb-1">
+                <p className="text-indigo-700 font-semibold mb-1">
                   📚 Course: <span className="font-normal">{event.courseName}</span>
                 </p>
-                <p className="text-purple-700 font-semibold mb-1">
+                <p className="text-indigo-700 font-semibold mb-1">
                   👤 Organizer: <span className="font-normal">{event.organizer}</span>
                 </p>
                 <div className="text-sm text-gray-600 space-y-1">

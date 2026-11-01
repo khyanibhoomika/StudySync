@@ -9,7 +9,7 @@ const InputField = ({ icon, ...props }) => (
     </div>
     <input
       {...props}
-      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
     />
   </div>
 );
@@ -18,7 +18,7 @@ const InputField = ({ icon, ...props }) => (
 const AuthButton = ({ children, ...props }) => (
   <button
     {...props}
-    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
   >
     {children}
   </button>
@@ -39,9 +39,9 @@ const SignupStepper = ({ activeStep }) => {
               <div
                 className={`rounded-full h-8 w-8 flex items-center justify-center font-bold transition-all duration-300 ${
                   isActive
-                    ? "bg-purple-600 text-white ring-4 ring-purple-200"
+                    ? "bg-indigo-600 text-white ring-4 ring-purple-200"
                     : isCompleted
-                    ? "bg-purple-600 text-white"
+                    ? "bg-indigo-600 text-white"
                     : "bg-gray-200 text-gray-500"
                 }`}
               >
@@ -49,7 +49,7 @@ const SignupStepper = ({ activeStep }) => {
               </div>
               <span
                 className={`mt-2 text-xs font-semibold ${
-                  isActive ? "text-purple-600" : "text-gray-500"
+                  isActive ? "text-indigo-600" : "text-gray-500"
                 }`}
               >
                 {step}
@@ -58,7 +58,7 @@ const SignupStepper = ({ activeStep }) => {
             {stepNumber < steps.length && (
               <div
                 className={`flex-auto border-t-2 transition-all duration-300 mx-4 mt-[-1rem] ${
-                  isCompleted ? "border-purple-600" : "border-gray-200"
+                  isCompleted ? "border-indigo-600" : "border-gray-200"
                 }`}
               ></div>
             )}
@@ -269,7 +269,7 @@ export default function Signup() {
     <form className="space-y-6" onSubmit={handleVerifyOtp}>
       <div className="text-center">
         <p className="text-gray-600">Enter the 6-digit code sent to:</p>
-        <p className="font-bold text-purple-600">{form.email}</p>
+        <p className="font-bold text-indigo-600">{form.email}</p>
         <button
           type="button"
           onClick={handleChangeEmail}
@@ -313,7 +313,7 @@ export default function Signup() {
           type="button"
           onClick={handleSendOtp}
           disabled={resendDisabled || loading}
-          className="text-sm font-semibold text-purple-600 hover:underline disabled:text-gray-400 disabled:cursor-not-allowed"
+          className="text-sm font-semibold text-indigo-600 hover:underline disabled:text-gray-400 disabled:cursor-not-allowed"
         >
           Resend OTP
         </button>
@@ -328,7 +328,7 @@ export default function Signup() {
           <h2 className="text-3xl font-bold text-gray-800">
             {step === "DETAILS" ? (
               <>
-                Join the <span className="text-purple-600">Community</span>
+                Join the <span className="text-indigo-600">Community</span>
               </>
             ) : (
               "Verify Your Email"
@@ -360,7 +360,7 @@ export default function Signup() {
           <span className="text-gray-500">Already have an account? </span>
           <Link
             to="/login"
-            className="font-semibold text-purple-600 hover:underline"
+            className="font-semibold text-indigo-600 hover:underline"
           >
             Sign In
           </Link>

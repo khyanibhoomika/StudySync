@@ -208,7 +208,7 @@ export default function NotificationsPage({
           <div className="flex items-center gap-4">
             <Link
               to="/dashboard"
-              className="text-purple-600 hover:text-purple-800 transition"
+              className="text-indigo-600 hover:text-purple-800 transition"
               aria-label="Back to Dashboard"
             >
               <svg
@@ -234,13 +234,13 @@ export default function NotificationsPage({
                   Notifications
                 </h1>
                 {unreadCount > 0 && (
-                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-full">
+                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold bg-gradient-to-r from-indigo-600 to-pink-500 text-white rounded-full">
                     {unreadCount}
                   </span>
                 )}
               </>
             ) : (
-              <h1 className="text-3xl font-bold text-purple-700">
+              <h1 className="text-3xl font-bold text-indigo-700">
                 {`Selected ${selectedIds.size} item(s)`}
               </h1>
             )}
@@ -250,14 +250,14 @@ export default function NotificationsPage({
             <div className="flex items-center gap-4">
               <button
                 onClick={handleToggleSelectMode}
-                className="text-sm font-medium text-purple-600 hover:text-purple-800 transition"
+                className="text-sm font-medium text-indigo-600 hover:text-purple-800 transition"
               >
                 Select
               </button>
               <button
                 onClick={handleMarkAllAsRead}
                 disabled={unreadCount === 0}
-                className="text-sm font-medium text-purple-600 hover:text-purple-800 disabled:text-gray-400 transition"
+                className="text-sm font-medium text-indigo-600 hover:text-purple-800 disabled:text-gray-400 transition"
               >
                 Mark all as read
               </button>
@@ -290,7 +290,7 @@ export default function NotificationsPage({
                 className={`flex-1 py-2 px-3 rounded-md text-sm font-semibold transition-all duration-300
                   ${
                     selectedTab === tab
-                      ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                      ? "bg-gradient-to-r from-indigo-600 to-pink-500 text-white shadow-md"
                       : "text-gray-600 hover:bg-white"
                   }`}
                 onClick={() => setSelectedTab(tab)}
@@ -376,7 +376,7 @@ function NotificationItem({
        }
        ${
          selectMode && isSelected
-           ? "ring-2 ring-purple-500 bg-purple-50" // Selected
+           ? "ring-2 ring-indigo-500 bg-purple-50" // Selected
            : "ring-0" // Not selected
        }
        ${
@@ -400,7 +400,7 @@ function NotificationItem({
             className={`w-6 h-6 rounded-full flex items-center justify-center border-2
               ${
                 isSelected
-                  ? "bg-purple-600 border-purple-600"
+                  ? "bg-indigo-600 border-indigo-600"
                   : "border-gray-400"
               }`}
           >
@@ -448,7 +448,7 @@ function NotificationItem({
         !selectMode && ( // Hide dot in select mode
           <motion.div
             layoutId={`dot-${id}`}
-            className="w-3 h-3 bg-purple-500 rounded-full flex-shrink-0"
+            className="w-3 h-3 bg-indigo-500 rounded-full flex-shrink-0"
           />
         )}
     </motion.button>
