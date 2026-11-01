@@ -24,6 +24,7 @@ import PeerProfile from "./components/peerprofile.jsx";
 import DirectMessageChat from "./components/DirectMessageChat.jsx";
 import CalendarView from "./components/Calendar/CalendarView.jsx";
 import { Route, Routes, Navigate, useLocation, useNavigate } from "react-router-dom";
+import CourseDetails from "./components/CourseDetails";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -120,6 +121,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/build-profile" element={<BuildProfile />} />
+          <Route path="/course/:courseId" element={<CourseDetails />} />
 
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

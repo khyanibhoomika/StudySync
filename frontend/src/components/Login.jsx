@@ -9,7 +9,7 @@ const InputField = ({ icon, ...props }) => (
     </div>
     <input
       {...props}
-      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition duration-200"
+      className="w-full pl-10 p-3 text-md rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
     />
   </div>
 );
@@ -18,7 +18,7 @@ const InputField = ({ icon, ...props }) => (
 const AuthButton = ({ children, ...props }) => (
   <button
     {...props}
-    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+    className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
   >
     {children}
   </button>
@@ -33,8 +33,8 @@ function ErrorModal({ title, message, buttonText, onClose }) {
     >
       {/* "Aurora" Background */}
       <div className="absolute inset-0 -z-10 bg-white/30 backdrop-blur-xl">
-        <div className="absolute top-10 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute bottom-10 -right-20 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-10 -left-20 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute bottom-10 -right-20 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       </div>
 
       {/* Modal Content Card */}
@@ -117,12 +117,12 @@ export default function Login() {
           onClose={closeModalAndRegister}
         />
       )}
-      <div className="min-h-screen flex items-center justify-center bg-purple-50/50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-indigo-50/50 p-4">
         <div className="max-w-md w-full mx-auto p-8 bg-white rounded-2xl shadow-xl space-y-8">
           {/* Header */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-800">
-              Welcome <span className="text-purple-600">Back!</span>
+              Welcome <span className="text-indigo-600">Back!</span>
             </h2>
             <p className="mt-2 text-gray-500">
               Sign in to continue your journey.
@@ -204,7 +204,7 @@ export default function Login() {
           <div className="flex justify-between items-center text-sm">
             <Link
               to="/signup"
-              className="font-semibold text-purple-600 hover:underline"
+              className="font-semibold text-indigo-600 hover:underline"
             >
               Create an account
             </Link>

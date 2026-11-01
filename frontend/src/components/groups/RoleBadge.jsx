@@ -5,7 +5,7 @@ const RoleBadge = ({ role }) => {
   let colorClass;
   switch (roleText) {
     case "ADMIN":
-      colorClass = "bg-purple-100 text-purple-700 border border-purple-200";
+      colorClass = "bg-indigo-100 text-indigo-700 border border-indigo-200";
       break;
     case "MEMBER":
     default:

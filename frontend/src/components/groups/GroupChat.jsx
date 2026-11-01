@@ -11,7 +11,7 @@ const ProfileButton = ({ size = 36, onClick, name }) => (
   <button
     type="button"
     onClick={onClick}
-    className="flex items-center justify-center rounded-full bg-purple-100 hover:bg-purple-200 border border-purple-300 shadow w-9 h-9 mr-2"
+    className="flex items-center justify-center rounded-full bg-indigo-100 hover:bg-indigo-200 border border-indigo-300 shadow w-9 h-9 mr-2"
     title={`View profile of ${name}`}
     style={{ width: size, height: size }}
   >
@@ -410,16 +410,16 @@ const GroupChat = ({
   // --- Render ---
 
   return (
-    <div className="flex flex-col h-full bg-gradient-to-br from-white via-purple-50 to-pink-50 w-full max-w-full">
+    <div className="flex flex-col h-full bg-gradient-to-br from-white via-indigo-50 to-pink-50 w-full max-w-full">
       {/* --- STUNNING HEADER (UPDATED) --- */}
       <div className="w-full flex px-4 py-3 border-b bg-white shadow-sm sticky top-0 z-30 items-center gap-3">
         <button
           type="button"
           onDoubleClick={handleGroupButtonDoubleClickOrDrag}
           onDragStart={handleGroupButtonDoubleClickOrDrag}
-          className="ml-3 px-6 py-2 rounded-xl shadow-lg shadow-orange-500/30 font-bold text-white
-                     bg-gradient-to-r from-purple-600 to-orange-500
-                     hover:from-purple-700 hover:to-orange-600 transition-all transform hover:scale-105 hover:shadow-orange-400/50"
+          className="ml-3 px-6 py-2 rounded-xl shadow-lg shadow-cyan-500/30 font-bold text-white
+                     bg-gradient-to-r from-indigo-600 to-cyan-500
+                     hover:from-indigo-700 hover:to-cyan-600 transition-all transform hover:scale-105 hover:shadow-cyan-400/50"
         >
           {groupName || "Group Chat"}
         </button>
@@ -431,13 +431,13 @@ const GroupChat = ({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search messages..."
-              className="block w-full pl-10 pr-4 py-2 bg-white text-purple-800 text-sm font-medium
-                         border-2 border-purple-100 rounded-full
-                         shadow-sm shadow-purple-500/10
-                         focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-300
+              className="block w-full pl-10 pr-4 py-2 bg-white text-indigo-800 text-sm font-medium
+                         border-2 border-indigo-100 rounded-full
+                         shadow-sm shadow-indigo-500/10
+                         focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-300
                          transition-all duration-300"
             />
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 pointer-events-none">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-indigo-400 pointer-events-none">
               <svg
                 width={18}
                 height={18}
@@ -457,7 +457,7 @@ const GroupChat = ({
       {/* --- Pinned Messages (Unchanged) --- */}
       {pinnedIds.length > 0 && (
         <div
-          className="flex gap-2 overflow-x-auto px-4 py-2 bg-purple-50 border-t border-purple-200 shadow-md sticky top-[60px] z-20"
+          className="flex gap-2 overflow-x-auto px-4 py-2 bg-indigo-50 border-t border-indigo-200 shadow-md sticky top-[60px] z-20"
           style={{ whiteSpace: "nowrap" }}
         >
           {pinnedIds.map((id) => {
@@ -466,7 +466,7 @@ const GroupChat = ({
             return (
               <div
                 key={id}
-                className="inline-block bg-purple-100 text-purple-800 py-1 px-3 rounded-full cursor-pointer select-none shadow"
+                className="inline-block bg-indigo-100 text-indigo-800 py-1 px-3 rounded-full cursor-pointer select-none shadow"
                 title={`${msg.senderName}: ${msg.content}`}
                 onClick={() => scrollToMessage(id)}
               >
@@ -497,8 +497,8 @@ const GroupChat = ({
 
               // ✅✅✅ --- 1. LIGHTER CHAT BUBBLES --- ✅✅✅
               const bubbleClass = isOwn
-                ? "bg-gradient-to-r from-purple-200 to-pink-200 text-gray-800 rounded-2xl rounded-tr-lg px-4 py-2 shadow-md"
-                : "bg-white border border-purple-100 rounded-2xl rounded-tl-lg px-4 py-2 shadow text-purple-900";
+                ? "bg-gradient-to-r from-indigo-200 to-pink-200 text-gray-800 rounded-2xl rounded-tr-lg px-4 py-2 shadow-md"
+                : "bg-white border border-indigo-100 rounded-2xl rounded-tl-lg px-4 py-2 shadow text-indigo-900";
 
               const contentClass = isOnlyEmoji(m.content)
                 ? "text-5xl md:text-6xl leading-none text-center py-3 select-none"
@@ -549,12 +549,12 @@ const GroupChat = ({
                                           scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100`}
                         >
                           <button
-                            className="hover:bg-purple-100 rounded-full p-1"
+                            className="hover:bg-indigo-100 rounded-full p-1"
                             style={{
                               minWidth: 24,
                               minHeight: 24,
                               lineHeight: 0,
-                              color: "#9254e8", // Always purple
+                              color: "#9254e8", // Always indigo
                             }}
                             onClick={() =>
                               setReplyTo({
@@ -568,7 +568,7 @@ const GroupChat = ({
                             <IconReply size={14} />
                           </button>
                           <button
-                            className="hover:bg-purple-100 rounded-full p-1"
+                            className="hover:bg-indigo-100 rounded-full p-1"
                             style={{
                               minWidth: 24,
                               minHeight: 24,
@@ -604,7 +604,7 @@ const GroupChat = ({
                         </div>
 
                         {!isOwn && (
-                          <div className="text-xs font-semibold text-purple-700 mb-1">
+                          <div className="text-xs font-semibold text-indigo-700 mb-1">
                             {m.senderName}
                           </div>
                         )}
@@ -613,7 +613,7 @@ const GroupChat = ({
                             className={`text-xs mb-1 border-l-2 pl-2 ${
                               isOwn
                                 ? "border-gray-500/50 text-gray-700/80" // Dark text on light bubble
-                                : "border-purple-300 text-gray-500"
+                                : "border-indigo-300 text-gray-500"
                             }`}
                           >
                             Replying to {m.replyToSenderName}:{" "}
@@ -629,7 +629,7 @@ const GroupChat = ({
                           <div
                             className={`flex items-center mt-2 text-xs rounded px-2 py-1 ${
                               isOwn
-                                ? "border border-purple-300/50 bg-purple-100/50 text-purple-800" // Dark text
+                                ? "border border-indigo-300/50 bg-indigo-100/50 text-indigo-800" // Dark text
                                 : "text-blue-700 border border-blue-100 bg-blue-50"
                             }`}
                           >
@@ -638,7 +638,7 @@ const GroupChat = ({
                             <button
                               className={`ml-2 underline ${
                                 isOwn
-                                  ? "text-purple-700 hover:text-purple-900" // Dark text
+                                  ? "text-indigo-700 hover:text-indigo-900" // Dark text
                                   : "text-blue-600 hover:text-blue-800"
                               }`}
                               onClick={async () => {
@@ -698,13 +698,13 @@ const GroupChat = ({
 
       {/* --- Reply Bar (Unchanged) --- */}
       {replyTo && (
-        <div className="max-w-2xl mx-auto mb-2 bg-purple-50 rounded px-3 py-2 flex items-center justify-between">
+        <div className="max-w-2xl mx-auto mb-2 bg-indigo-50 rounded px-3 py-2 flex items-center justify-between">
           <span>
             Replying to <strong>{replyTo.user}</strong>: {replyTo.message}
           </span>
           <button
             onClick={() => setReplyTo(null)}
-            className="text-xs p-1 text-purple-700"
+            className="text-xs p-1 text-indigo-700"
           >
             Cancel
           </button>
@@ -719,13 +719,13 @@ const GroupChat = ({
         >
           <button
             type="button"
-            className="p-2 rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition"
+            className="p-2 rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition"
             onClick={() => setShowPollForm(true)}
             title="Create Poll"
           >
             <IconPoll />
           </button>
-          <label className="p-2 cursor-pointer rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition">
+          <label className="p-2 cursor-pointer rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition">
             <IconClip />
             <input
               type="file"
@@ -762,7 +762,7 @@ const GroupChat = ({
           </label>
           <button
             type="button"
-            className="p-2 rounded-full text-purple-500 hover:text-purple-700 hover:bg-purple-50 transition"
+            className="p-2 rounded-full text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition"
             onClick={() => setShowEmoji((v) => !v)}
             title="Emoji"
           >
@@ -771,8 +771,8 @@ const GroupChat = ({
           <input
             type="text"
             placeholder="Type a message..."
-            className="flex-1 px-4 py-2 bg-white border border-gray-300 rounded-full text-purple-800
-                       focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 transition"
+            className="flex-1 px-4 py-2 bg-white border border-gray-300 rounded-full text-indigo-800
+                       focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-400 transition"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
@@ -780,18 +780,18 @@ const GroupChat = ({
           {/* UPDATED SEND BUTTON */}
           <button
             type="submit"
-            className="rounded-full font-semibold text-white shadow-xl shadow-purple-500/60 flex items-center justify-center
+            className="rounded-full font-semibold text-white shadow-xl shadow-indigo-500/60 flex items-center justify-center
                        w-11 h-11
-                       bg-purple-500
+                       bg-indigo-500
                        p-1
                        transition-all duration-100 ease-in
-                       hover:shadow-purple-600/80
+                       hover:shadow-indigo-600/80
                        active:scale-90 active:shadow-inner
                        disabled:opacity-50 disabled:shadow-none"
             disabled={!input.trim()}
           >
             {/* Inner Circle */}
-            <div className="w-full h-full rounded-full bg-gradient-to-r from-orange-400 to-pink-400 flex items-center justify-center">
+            <div className="w-full h-full rounded-full bg-gradient-to-r from-cyan-400 to-pink-400 flex items-center justify-center">
               <IconSend
                 size={
                   window.innerWidth < 400

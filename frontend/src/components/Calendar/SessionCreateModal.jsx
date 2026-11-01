@@ -196,9 +196,9 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-gradient-to-br from-white via-purple-50 to-pink-50 rounded-3xl shadow-2xl w-full max-w-[600px] overflow-hidden">
+      <div className="bg-gradient-to-br from-white via-indigo-50 to-pink-50 rounded-3xl shadow-2xl w-full max-w-[600px] overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-5 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-indigo-600 via-pink-500 to-cyan-400 px-6 py-5 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-white">
             ✨ Create New Session
           </h2>
@@ -214,40 +214,40 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
         <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
           {/* Topic */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               📚 Topic *
             </label>
             <input
               type="text"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+              className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               📝 Description *
             </label>
             <textarea
               rows="3"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+              className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
             />
           </div>
 
           {/* Course */}
           {!groupId && (
             <div>
-              <label className="font-semibold text-purple-700 text-sm">
+              <label className="font-semibold text-indigo-700 text-sm">
                 📚 Course *
               </label>
               <select
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+                className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
               >
                 <option value="">Select Course</option>
                 {courses.map((c) => (
@@ -262,14 +262,14 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
           {/* Group */}
           {!groupId && (
             <div>
-              <label className="font-semibold text-purple-700 text-sm">
+              <label className="font-semibold text-indigo-700 text-sm">
                 👥 Group *
               </label>
               <select
                 value={selectedGroup}
                 onChange={(e) => setSelectedGroup(e.target.value)}
                 disabled={!selectedCourse}
-                className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+                className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
               >
                 <option value="">Select Group</option>
                 {groups.map((g) => (
@@ -283,7 +283,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Organizer */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               👤 Organizer
             </label>
 
@@ -293,8 +293,8 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
               readOnly
               className="
       w-full px-4 py-3 rounded-xl 
-      border-2 border-purple-200 
-      bg-purple-50 
+      border-2 border-indigo-200 
+      bg-indigo-50 
       text-gray-700
       cursor-not-allowed 
       focus:ring-0 focus:outline-none
@@ -305,7 +305,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Date & Time */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               🕒 Date & Time *
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -314,7 +314,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
                 min={todayStr}
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="px-3 py-3 border-2 rounded-xl border-purple-200"
+                className="px-3 py-3 border-2 rounded-xl border-indigo-200"
               />
 
               <input
@@ -322,7 +322,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
                 min={minStartTime}
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className="px-3 py-3 border-2 rounded-xl border-purple-200"
+                className="px-3 py-3 border-2 rounded-xl border-indigo-200"
               />
 
               <input
@@ -343,13 +343,13 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Session Type */}
           <div>
-            <label className="font-semibold text-purple-700 text-sm">
+            <label className="font-semibold text-indigo-700 text-sm">
               🌐 Session Type
             </label>
             <select
               value={sessionType}
               onChange={(e) => setSessionType(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+              className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
             >
               <option value="online">Online (💻)</option>
               <option value="offline">Offline (🏢)</option>
@@ -359,20 +359,20 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
 
           {/* Online / Hybrid Fields */}
           {(sessionType === "online" || sessionType === "hybrid") && (
-            <div className="bg-purple-50 p-4 rounded-xl border-2 border-purple-200 space-y-3">
+            <div className="bg-indigo-50 p-4 rounded-xl border-2 border-indigo-200 space-y-3">
               <input
                 type="url"
                 placeholder="Meeting link (https://...)"
                 value={meetingLink}
                 onChange={(e) => setMeetingLink(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+                className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
               />
               <input
                 type="text"
                 placeholder="Passcode (optional)"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border-2 border-purple-200"
+                className="w-full px-4 py-3 rounded-xl border-2 border-indigo-200"
               />
             </div>
           )}
@@ -402,7 +402,7 @@ export default function SessionCreateModal({ groupId, onCreate, onClose }) {
           <button
             onClick={handleCreate}
             disabled={isCreating}
-            className="px-8 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold shadow-lg disabled:opacity-50"
+            className="px-8 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-bold shadow-lg disabled:opacity-50"
           >
             {isCreating ? "Creating..." : "Create Session"}
           </button>

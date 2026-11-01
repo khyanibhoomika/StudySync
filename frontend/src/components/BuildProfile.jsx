@@ -36,7 +36,7 @@ const InputField = ({
         ${
           errors[name]
             ? "border-red-500 ring-2 ring-red-300"
-            : "border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
         }`}
     />
 
@@ -78,7 +78,7 @@ const TextareaField = ({
         ${
           errors[name]
             ? "border-red-500 ring-2 ring-red-300"
-            : "border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
         }`}
     ></textarea>
 
@@ -106,9 +106,9 @@ const SignupStepper = ({ activeStep }) => {
               <div
                 className={`rounded-full h-8 w-8 flex items-center justify-center font-bold transition-all duration-300 ${
                   isActive
-                    ? "bg-purple-600 text-white ring-4 ring-purple-200"
+                    ? "bg-indigo-600 text-white ring-4 ring-indigo-200"
                     : isCompleted
-                    ? "bg-purple-600 text-white"
+                    ? "bg-indigo-600 text-white"
                     : "bg-gray-200 text-gray-500"
                 }`}
               >
@@ -118,7 +118,7 @@ const SignupStepper = ({ activeStep }) => {
             {stepNumber < steps.length && (
               <div
                 className={`flex-auto border-t-2 transition-all duration-300 mx-4 ${
-                  isCompleted ? "border-purple-600" : "border-gray-200"
+                  isCompleted ? "border-indigo-600" : "border-gray-200"
                 }`}
               ></div>
             )}
@@ -286,11 +286,11 @@ export default function BuildProfile() {
   // UI
   // ==========================
   return (
-    <div className="min-h-screen flex items-center justify-center bg-purple-50/50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-indigo-50/50 p-4">
       <div className="max-w-3xl w-full mx-auto p-8 bg-white rounded-2xl shadow-xl space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-800">
-            Build Your <span className="text-purple-600">Academic Profile</span>
+            Build Your <span className="text-indigo-600">Academic Profile</span>
           </h2>
           <p className="mt-2 text-gray-500">
             This helps us match you with the best study groups.
@@ -458,7 +458,7 @@ export default function BuildProfile() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-purple-700 transition-all transform hover:scale-105"
+                  className="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition-all transform hover:scale-105"
                 >
                   Next →
                 </button>
@@ -468,7 +468,7 @@ export default function BuildProfile() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
+                  className="bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-wait"
                 >
                   {isSubmitting ? "Finishing Up..." : "Complete Signup"}
                 </button>

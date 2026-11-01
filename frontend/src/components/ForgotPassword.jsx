@@ -130,14 +130,14 @@ export default function ForgotPassword() {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className={`rounded-lg w-full px-4 py-3 border ${error ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-purple-400`}
+        className={`rounded-lg w-full px-4 py-3 border ${error ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-indigo-400`}
         placeholder="Enter your email address"
         required
       />
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow hover:from-purple-700 hover:to-orange-600 transition disabled:opacity-50"
+        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow hover:from-indigo-700 hover:to-cyan-600 transition disabled:opacity-50"
       >
         {loading ? "Sending OTP..." : "Send Reset OTP"}
       </button>
@@ -153,7 +153,7 @@ export default function ForgotPassword() {
        <button
         type="button"
         onClick={() => { setStep(STEPS.EMAIL); clearMessages(); }}
-        className="text-sm text-purple-600 hover:underline disabled:text-gray-400 disabled:cursor-not-allowed font-medium block text-center w-full"
+        className="text-sm text-indigo-600 hover:underline disabled:text-gray-400 disabled:cursor-not-allowed font-medium block text-center w-full"
       >
         (Wrong email? Click to change)
       </button>
@@ -161,7 +161,7 @@ export default function ForgotPassword() {
         type="text"
         value={otp}
         onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, '').slice(0, 6))}
-        className="rounded-lg w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-purple-400 text-center tracking-[1em]"
+        className="rounded-lg w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-indigo-400 text-center tracking-[1em]"
         placeholder="------"
         maxLength="6"
         required
@@ -170,7 +170,7 @@ export default function ForgotPassword() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-orange-500 text-lg font-bold text-white shadow hover:from-purple-700 hover:to-orange-600 transition disabled:opacity-50"
+        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 text-lg font-bold text-white shadow hover:from-indigo-700 hover:to-cyan-600 transition disabled:opacity-50"
       >
         {loading ? "Verifying..." : "Verify OTP"}
       </button>
@@ -195,7 +195,7 @@ export default function ForgotPassword() {
         type="password"
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
-        className="rounded-lg w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-purple-400"
+        className="rounded-lg w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-indigo-400"
         placeholder="Enter New Password (min 6 chars)"
         minLength="6"
         required
@@ -203,7 +203,7 @@ export default function ForgotPassword() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-800 to-pink-700 text-lg font-bold text-white shadow hover:from-purple-900 hover:to-pink-800 transition disabled:opacity-50"
+        className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-800 to-pink-700 text-lg font-bold text-white shadow hover:from-indigo-900 hover:to-pink-800 transition disabled:opacity-50"
       >
         {loading ? "Resetting..." : "Set New Password"}
       </button>
@@ -212,9 +212,9 @@ export default function ForgotPassword() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 py-12 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-pink-500 to-cyan-400 py-12 px-4">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl p-10">
-        <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-orange-400 mb-6">
+        <h2 className="text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-cyan-400 mb-6">
           {step === STEPS.EMAIL && "Forgot Password"}
           {step === STEPS.OTP_VERIFY && "Verify OTP"}
           {step === STEPS.RESET_PASSWORD && "Set New Password"}
@@ -230,7 +230,7 @@ export default function ForgotPassword() {
         {step === STEPS.RESET_PASSWORD && renderResetPasswordStep()}
         
         <button
-          className="mt-4 text-sm text-purple-600 hover:underline w-full"
+          className="mt-4 text-sm text-indigo-600 hover:underline w-full"
           onClick={() => navigate("/login")}
         >
           Back to Login

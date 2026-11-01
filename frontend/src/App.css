@@ -48,14 +48,14 @@
 
 /* Styles the "+X more" link to match your theme */
 .rbc-show-more {
-  background-color: #f3e8ff !important; /* light-purple-100 */
-  color: #6b21a8 !important; /* purple-700 */
+  background-color: #f3e8ff !important; /* light-indigo-100 */
+  color: #6b21a8 !important; /* indigo-700 */
   font-weight: 600 !important;
   border-radius: 4px !important;
   margin-top: 2px !important;
 }
 .rbc-show-more:hover {
-  background-color: #e9d5ff !important; /* purple-200 */
+  background-color: #e9d5ff !important; /* indigo-200 */
 }
 
 @keyframes ping-once {

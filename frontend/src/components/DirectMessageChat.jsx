@@ -57,9 +57,9 @@ export default function DirectMessageChat() {
     <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
       <div className="w-full max-w-4xl bg-white h-[80vh] rounded-2xl shadow-xl flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-purple-700 p-4 text-white flex items-center justify-between shadow-md z-10">
+        <div className="bg-indigo-700 p-4 text-white flex items-center justify-between shadow-md z-10">
           <div className="flex items-center gap-4">
-            <button onClick={() => navigate(-1)} className="font-bold hover:text-orange-200">← Back</button>
+            <button onClick={() => navigate(-1)} className="font-bold hover:text-cyan-200">← Back</button>
             <h2 className="text-xl font-bold">Chatting with {peerName}</h2>
           </div>
         </div>
@@ -73,9 +73,9 @@ export default function DirectMessageChat() {
           ) : (
             chatHistory.map((msg) => (
               <div key={msg.id} className="flex justify-end">
-                <div className="max-w-[70%] p-3 rounded-2xl bg-purple-600 text-white rounded-br-none">
+                <div className="max-w-[70%] p-3 rounded-2xl bg-indigo-600 text-white rounded-br-none">
                   <p>{msg.text}</p>
-                  <span className="text-xs mt-1 block text-right text-purple-200">
+                  <span className="text-xs mt-1 block text-right text-indigo-200">
                     {msg.timestamp}
                   </span>
                 </div>
@@ -91,11 +91,11 @@ export default function DirectMessageChat() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
-            className="flex-1 p-3 border rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none bg-gray-50"
+            className="flex-1 p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-gray-50"
           />
           <button 
             type="submit" 
-            className="px-6 py-3 bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold rounded-xl hover:opacity-90 transition-opacity shadow-md"
+            className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-opacity shadow-md"
           >
             Send
           </button>
